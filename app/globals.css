@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +19,7 @@
   }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -26,7 +27,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
+ body {
+  background-color: #FBF7F7;
+ }
 
 @layer utilities {
   .text-balance {
@@ -38,5 +42,83 @@ body {
   font-family: "Major Mono Display", monospace;
   font-weight: 400;
   font-style: normal;
+}
+
+h1 {
+  font-family: "Martian Mono", monospace;
+  line-height: 1.5em;
+  font-size: 36px;
+} 
+
+/* Utility Classes */
+.major-mono-display-regular {
+  font-family: 'Martian Mono', monospace;
+  font-weight: 400;
+  line-height: auto;
+}
+
+.pencil-cursor {
+  cursor: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 59 59' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50.9568 36.0834C51.7529 36.8785 52.3845 37.8226 52.8155 38.8619C53.2466 39.9011 53.4685 41.0151 53.4687 42.1402C53.469 43.2653 53.2475 44.3795 52.8169 45.4189C52.3863 46.4583 51.7551 47.4027 50.9593 48.1981L48.1888 50.9686C46.5831 52.5739 44.4056 53.4756 42.1351 53.4756C39.8647 53.4756 37.6871 52.5739 36.0815 50.9686L8.04172 22.9362C7.24588 22.1415 6.61456 21.1977 6.18387 20.1587C5.75318 19.1198 5.53159 18.0061 5.53176 16.8814L5.53176 7.375C5.53176 6.88601 5.72601 6.41704 6.07178 6.07127C6.41755 5.7255 6.88652 5.53125 7.37551 5.53125L16.8253 5.53125C17.9489 5.53108 19.0614 5.75221 20.0995 6.18203C21.1375 6.61185 22.0808 7.24193 22.8753 8.03629L50.9568 36.0834ZM48.351 45.5898C48.8043 45.137 49.1639 44.5994 49.4092 44.0076C49.6545 43.4158 49.7808 42.7814 49.7808 42.1408C49.7808 41.5001 49.6545 40.8657 49.4092 40.2739C49.1639 39.6821 48.8043 39.1445 48.351 38.6917L46.1459 36.489L36.4822 46.1528L38.6898 48.3603C39.6039 49.2743 40.8437 49.7877 42.1363 49.7877C43.429 49.7877 44.6687 49.2743 45.5829 48.3603L48.351 45.5898Z' fill='black'/%3E%3C/svg%3E") 0 0, auto;
+}
+
+.default-cursor {
+  cursor: default;
+}
+
+.circle-animation {
+  position: relative;
+  display: inline-block;
+}
+
+.circle-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto; /* Maintain aspect ratio */
+  pointer-events: none;
+}
+
+.name{
+  position: relative;
+}
+.smiley-path {
+  position: absolute;
+  top: -42px;
+  left: 57%;
+  vertical-align: middle;
+}
+
+.smiley-path path:nth-child(1) {
+  stroke-dasharray: 100; /* Adjust this value based on the path length */
+  stroke-dashoffset: 100; /* Adjust this value based on the path length */
+  animation: draw-circle 0.5s ease-out forwards;
+}
+
+.smiley-path path:nth-child(2) {
+  stroke-dasharray: 100; /* Adjust this value based on the path length */
+  stroke-dashoffset: 100; /* Adjust this value based on the path length */
+  animation: draw-circle 0.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.smiley-path path:nth-child(3) {
+  stroke-dasharray: 100; /* Adjust this value based on the path length */
+  stroke-dashoffset: 100; /* Adjust this value based on the path length */
+  animation: draw-circle 0.5s ease-out forwards;
+  animation-delay: 1s;
+}
+
+.circle-svg path {
+  stroke-dasharray: 2200; /* Adjust this value based on the path length */
+  stroke-dashoffset: 2200; /* Adjust this value based on the path length */
+  animation: draw-circle 4s ease-out forwards;
+  animation-delay: 2s;
+}
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
