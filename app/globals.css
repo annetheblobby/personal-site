@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,9 +29,10 @@
     )
     rgb(var(--background-start-rgb));
 } */
- body {
+body {
   background-color: #FBF7F7;
- }
+  font-family: "Roboto", serif;
+}
 
 @layer utilities {
   .text-balance {
@@ -48,7 +50,17 @@ h1 {
   font-family: "Martian Mono", monospace;
   line-height: 1.5em;
   font-size: 36px;
-} 
+}
+
+.headerWorks {
+  font-family: "Martian Mono", monospace;
+  /* line-height: 1.5em; */
+  font-size: 64px;
+}
+
+.monoFont {
+  font-family: "Martian Mono", monospace;
+}
 
 /* Utility Classes */
 .major-mono-display-regular {
@@ -75,13 +87,15 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: auto; /* Maintain aspect ratio */
+  height: auto;
+  /* Maintain aspect ratio */
   pointer-events: none;
 }
 
-.name{
+.name {
   position: relative;
 }
+
 .smiley-path {
   position: absolute;
   top: -42px;
@@ -90,28 +104,36 @@ h1 {
 }
 
 .smiley-path path:nth-child(1) {
-  stroke-dasharray: 100; /* Adjust this value based on the path length */
-  stroke-dashoffset: 100; /* Adjust this value based on the path length */
+  stroke-dasharray: 100;
+  /* Adjust this value based on the path length */
+  stroke-dashoffset: 100;
+  /* Adjust this value based on the path length */
   animation: draw-circle 0.5s ease-out forwards;
 }
 
 .smiley-path path:nth-child(2) {
-  stroke-dasharray: 100; /* Adjust this value based on the path length */
-  stroke-dashoffset: 100; /* Adjust this value based on the path length */
+  stroke-dasharray: 100;
+  /* Adjust this value based on the path length */
+  stroke-dashoffset: 100;
+  /* Adjust this value based on the path length */
   animation: draw-circle 0.5s ease-out forwards;
   animation-delay: 0.5s;
 }
 
 .smiley-path path:nth-child(3) {
-  stroke-dasharray: 100; /* Adjust this value based on the path length */
-  stroke-dashoffset: 100; /* Adjust this value based on the path length */
+  stroke-dasharray: 100;
+  /* Adjust this value based on the path length */
+  stroke-dashoffset: 100;
+  /* Adjust this value based on the path length */
   animation: draw-circle 0.5s ease-out forwards;
   animation-delay: 1s;
 }
 
 .circle-svg path {
-  stroke-dasharray: 2200; /* Adjust this value based on the path length */
-  stroke-dashoffset: 2200; /* Adjust this value based on the path length */
+  stroke-dasharray: 2200;
+  /* Adjust this value based on the path length */
+  stroke-dashoffset: 2200;
+  /* Adjust this value based on the path length */
   animation: draw-circle 4s ease-out forwards;
   animation-delay: 2s;
 }
@@ -122,3 +144,34 @@ h1 {
   }
 }
 
+.rotateLeft {
+  transform: rotate(-25deg);
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0.1;
+  }
+
+  80% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.drop-animation {
+  animation: drop 0.5s ease-out forwards;
+}
