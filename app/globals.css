@@ -60,6 +60,10 @@ h1 {
   font-family: "Martian Mono", monospace;
 }
 
+.sansFont {
+  font-family: "Roboto", sans-serif;
+}
+
 /* Utility Classes */
 .major-mono-display-regular {
   font-family: 'Martian Mono', monospace;
