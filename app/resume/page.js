@@ -6,11 +6,10 @@ import {
   educationData,
 } from "../data/resumeData";
 import Header from "../components/header";
-import emailjs from '@emailjs/browser';
-import { useState, useRef } from 'react';
+import emailjs from "@emailjs/browser";
+import { useState, useRef } from "react";
 import CanvasDraw from "react-canvas-draw";
 import { FaUndo } from "react-icons/fa";
-
 
 emailjs.init({
   publicKey: "Mm4TDs90nDOA5B3O9",
@@ -24,21 +23,24 @@ export default function Resume() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    const canvasData = canvasRef.current.canvasContainer.children[1].toDataURL();
+    const canvasData =
+      canvasRef.current.canvasContainer.children[1].toDataURL();
     e.target.elements.drawing.value = canvasData;
 
     console.log(e.target);
 
-    emailjs.sendForm('service_zjmfecd', 'template_0u66079', e.target)
-      .then((result) => {
+    emailjs.sendForm("service_zjmfecd", "template_0u66079", e.target).then(
+      (result) => {
         console.log(result.text);
         setMessageSent(true);
         setTimeout(() => setMessageSent(false), 2000);
-        canvasRef.current.clear()
+        canvasRef.current.clear();
         e.target.reset();
-      }, (error) => {
+      },
+      (error) => {
         console.log(error.text);
-      });
+      }
+    );
   };
 
   return (
@@ -60,10 +62,21 @@ export default function Resume() {
               >
                 About
               </h1>
-              <svg className="object-contain absolute bottom-px z-[-1] shrink-0 -left-1 self-start" width="149" height="18" viewBox="0 0 149 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12.8534C34.7713 12.8534 63.0757 11.0737 92.6087 7.79231C109.38 5.9288 126.327 5 143.219 5" stroke="#A7EB7B" stroke-width="10" stroke-linecap="round" />
+              <svg
+                className="object-contain absolute bottom-px z-[-1] shrink-0 -left-1 self-start"
+                width="149"
+                height="18"
+                viewBox="0 0 149 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12.8534C34.7713 12.8534 63.0757 11.0737 92.6087 7.79231C109.38 5.9288 126.327 5 143.219 5"
+                  stroke="#A7EB7B"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                />
               </svg>
-
             </div>
 
             <p className="mt-5 text-2xl tracking-wide text-black max-md:max-w-full">
@@ -161,8 +174,13 @@ export default function Resume() {
             </div>
 
             <section className="flex flex-col mt-8 w-full max-md:max-w-full">
-              <h2 className="text-3xl font-medium uppercase text-zinc-800">Contact</h2>
-              <form onSubmit={sendEmail} className="flex flex-col mt-5 w-full max-md:max-w-full">
+              <h2 className="text-3xl font-medium uppercase text-zinc-800">
+                Contact
+              </h2>
+              <form
+                onSubmit={sendEmail}
+                className="flex flex-col mt-5 w-full max-md:max-w-full"
+              >
                 <div className="flex flex-row max-md:flex-col gap-4 max-md:max-w-full">
                   <div className="flex flex-col w-full">
                     <input
@@ -190,10 +208,28 @@ export default function Resume() {
                   <div className="w-full">
                     <input type="hidden" name="drawing" />
                     <div className="flex flex-col absolute ml-2 mt-2 bg-gray-100 border border-gray-800 p-2 z-10">
-                      <button type="button" className="p-2 bg-[#A7EB7B] mt-1" onClick={() => setColor("#A7EB7B")}></button>
-                      <button type="button" className="p-2 bg-blue-500 mt-1" onClick={() => setColor("#0000ff")}></button>
-                      <button type="button" className="p-2 bg-black mt-1" onClick={() => setColor("#000000")}></button>
-                      <button type="button" className="pt-1 mt-1" onClick={() => canvasRef.current.undo()}><FaUndo /></button>
+                      <button
+                        type="button"
+                        className="p-2 bg-[#A7EB7B] mt-1"
+                        onClick={() => setColor("#A7EB7B")}
+                      ></button>
+                      <button
+                        type="button"
+                        className="p-2 bg-blue-500 mt-1"
+                        onClick={() => setColor("#0000ff")}
+                      ></button>
+                      <button
+                        type="button"
+                        className="p-2 bg-black mt-1"
+                        onClick={() => setColor("#000000")}
+                      ></button>
+                      <button
+                        type="button"
+                        className="pt-1 mt-1"
+                        onClick={() => canvasRef.current.undo()}
+                      >
+                        <FaUndo />
+                      </button>
                     </div>
                     <CanvasDraw
                       ref={canvasRef}
@@ -205,7 +241,10 @@ export default function Resume() {
                     />
                   </div>
                 </div>
-                <button type="submit" className="mt-3 p-2 bg-[#A7EB7B] text-black w-32">
+                <button
+                  type="submit"
+                  className="mt-3 p-2 bg-[#A7EB7B] text-black w-32"
+                >
                   Send
                 </button>
                 {messageSent && (

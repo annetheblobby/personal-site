@@ -12,7 +12,7 @@ import blob from "./images/blob.png";
 import painting from "./images/painting.png";
 import vr from "./images/vr.png";
 
-import { useEffect } from "react";
+import Link from "next/link";
 
 export default function experiments() {
   // useEffect(() => {
@@ -53,13 +53,16 @@ export default function experiments() {
               alt="Tote"
             />
           </div>
-          <div className="absolute left-[25%] top-[650px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[450px] drop-animation">
+          <Link
+            href="/experiments/sketches"
+            className="absolute left-[25%] top-[650px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[450px] drop-animation"
+          >
             <Image
               src={sketch}
               className="hover:scale-110 transition-transform duration-100"
               alt="Sketch"
             />
-          </div>
+          </Link>
           <div className="absolute left-[10%] top-[900px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[250px] drop-animation">
             <Image
               src={tree}

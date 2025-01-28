@@ -109,7 +109,8 @@ const projects = [
   // ... other projects
 ];
 
-export default function ProjectPage({ params }) {
+export default async function ProjectPage(props) {
+  const params = await props.params;
   const project = projects.find((p) => p.id === params.id);
   console.log(project);
 

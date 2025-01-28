@@ -2,7 +2,8 @@ import Header from "../../components/header";
 import Link from "next/link";
 import { blogs } from "../../data/blogData";
 
-export default function BlogPage({ params }) {
+export default async function BlogPage(props) {
+  const params = await props.params;
   const blog = blogs.find((b) => b.id === params.id);
   console.log("Found blog:", blog);
 
