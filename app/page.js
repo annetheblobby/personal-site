@@ -4,30 +4,31 @@ import Header from "./components/header";
 import DrawingCanvas from "./components/DrawingCanvas";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { projects } from "./data/worksData";
 
-const projects = [
-  {
-    id: "interactive-tutorials",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/7e31d0a311b75ef92a898faf378ddd742d5d9e8a526be9c0a2347866c429f06e?",
-    title: "Shopify.dev | Interactive Two Column Coding Tutorials",
-    description: "UX Design, UX research, Prototyping, Feature Development",
-  },
-  {
-    id: "sketches",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/7e31d0a311b75ef92a898faf378ddd742d5d9e8a526be9c0a2347866c429f06e?",
-    title: "Shopify.dev | Interactive Two Column Coding Tutorials",
-    description: "UX Design, UX research, Prototyping, Feature Development",
-  },
-  {
-    id: "drawing",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/7e31d0a311b75ef92a898faf378ddd742d5d9e8a526be9c0a2347866c429f06e?",
-    title: "Shopify.dev | Interactive Two Column Coding Tutorials",
-    description: "UX Design, UX research, Prototyping, Feature Development",
-  },
-];
+// const projects = [
+//   {
+//     id: "interactive-tutorials",
+//     image:
+//       "https://cdn.builder.io/api/v1/image/assets/TEMP/7e31d0a311b75ef92a898faf378ddd742d5d9e8a526be9c0a2347866c429f06e?",
+//     title: "Shopify.dev | Interactive Two Column Coding Tutorials",
+//     description: "UX Design, UX research, Prototyping, Feature Development",
+//   },
+//   {
+//     id: "sketches",
+//     image:
+//       "https://cdn.builder.io/api/v1/image/assets/TEMP/7e31d0a311b75ef92a898faf378ddd742d5d9e8a526be9c0a2347866c429f06e?",
+//     title: "Shopify.dev | Interactive Two Column Coding Tutorials",
+//     description: "UX Design, UX research, Prototyping, Feature Development",
+//   },
+//   {
+//     id: "drawing",
+//     image:
+//       "https://cdn.builder.io/api/v1/image/assets/TEMP/7e31d0a311b75ef92a898faf378ddd742d5d9e8a526be9c0a2347866c429f06e?",
+//     title: "Shopify.dev | Interactive Two Column Coding Tutorials",
+//     description: "UX Design, UX research, Prototyping, Feature Development",
+//   },
+// ];
 
 const Project = ({ image, title, description, id }) => {
   return (

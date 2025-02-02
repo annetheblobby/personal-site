@@ -10,7 +10,7 @@ export default function BriefCard({
   hasUnderline,
 }) {
   const baseClasses =
-    "flex grow shrink justify-center items-center self-stretch my-auto min-h-[275px] min-w-[240px] w-[220px]";
+    "flex grow shrink justify-center self-stretch my-auto min-h-[275px] min-w-[240px] w-[220px]";
   const classes = hasBorder ? `${baseClasses} ${borderStyle}` : baseClasses;
 
   if (image) {
@@ -20,14 +20,13 @@ export default function BriefCard({
           loading="lazy"
           src={image}
           alt={imageAlt}
-          className={`object-contain ${hasShadow ? customStyle : ""} ${
-            title
-              ? "absolute top-2/4 left-2/4 z-0 self-start rounded-full -translate-x-2/4 -translate-y-2/4"
-              : ""
-          } aspect-square ${title ? "h-[250px] min-w-[240px] w-[250px]" : ""}`}
+          className={`object-contain ${hasShadow ? customStyle : ""} ${title
+            ? "absolute top-2/4 left-2/4 z-0 self-start rounded-full -translate-x-2/4 -translate-y-2/4"
+            : ""
+            } aspect-square ${title ? "h-[250px] min-w-[240px] w-[250px]" : ""}`}
         />
         {title && (
-          <div className="flex z-0 flex-col my-auto w-36 min-h-[107px] relative">
+          <div className="flex z-0 flex-col my-8 mx-8 min-h-[107px] relative">
             {hasUnderline && (
               <div className="flex relative gap-2.5 items-start self-start font-bold whitespace-nowrap">
                 <svg
@@ -58,7 +57,7 @@ export default function BriefCard({
 
   return (
     <div className={classes}>
-      <div className="flex flex-col self-stretch my-auto w-36 ">
+      <div className="flex flex-col self-stretch my-8 mx-8 ">
         {hasUnderline && (
           <div className="flex relative gap-2.5 items-start self-start font-bold whitespace-nowrap">
             <svg

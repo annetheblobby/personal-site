@@ -5,7 +5,7 @@ export default function ProjectDetailCard({
   underlineLeft,
 }) {
   return (
-    <div className="flex flex-col self-stretch my-auto w-[184px]">
+    <div className="flex flex-col self-stretch w-[184px]">
       <div className="flex relative flex-col w-full font-bold whitespace-nowrap">
         <svg
           className="object-contain absolute bottom-px z-0 shrink-0 -left-1 self-start"
