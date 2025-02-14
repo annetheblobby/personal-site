@@ -206,8 +206,15 @@ export default function Resume() {
                   </div>
 
                   <div className="w-full">
-                    <input type="hidden" name="drawing" />
-                    <div className="flex flex-col absolute ml-2 mt-2 bg-gray-100 border border-gray-800 p-2 z-10">
+                    <input
+                      type="hidden"
+                      name="drawing"
+                      placeholder="Your sketch (optional)"
+                    />
+                    <p className="text-gray-400 absolute ml-4 mt-4">
+                      Your drawing
+                    </p>
+                    <div className="flex flex-col absolute ml-4 mt-[250px] bg-gray-100 border border-gray-800 p-2 z-10">
                       <button
                         type="button"
                         className="p-2 bg-[#A7EB7B] mt-1"
@@ -231,6 +238,7 @@ export default function Resume() {
                         <FaUndo />
                       </button>
                     </div>
+
                     <CanvasDraw
                       ref={canvasRef}
                       brushColor={color}

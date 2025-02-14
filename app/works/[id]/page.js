@@ -51,19 +51,19 @@ export default async function ProjectPage(props) {
           {project.bodyContents.map((section) => (
             <div
               key={section.id}
-              className="flex flex-col mt-36 max-w-full text-lg text-neutral-900 max-md:mt-10 mb-20"
+              className="flex flex-col mt-24 max-w-full text-lg text-neutral-900 max-md:mt-10 mb-12"
             >
               <div className="flex relative gap-2.5 items-start self-start font-bold whitespace-nowrap">
                 <svg
-                  className="object-contain absolute bottom-px left-0.5 z-0 shrink-0 self-start w-[80px]"
-                  width="86"
+                  className="object-contain absolute bottom-px left-0.5 z-0 shrink-0 self-start w-full"
+                  width="100%"
                   height="9"
-                  viewBox="0 0 86 9"
-                  fill="none"
+                  viewBox="0 0 100 9"
+                  preserveAspectRatio="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M3 3.01495C7.73264 4.19981 11.5751 3.14341 16.0769 3.01495C20.2132 2.89693 24.1878 3.50983 28.2991 3.71976C38.9933 4.2658 49.362 5.25374 60.094 5.25374C67.731 5.25374 75.6026 6 83 6"
+                    d="M3 3.01495C7.73264 4.19981 11.5751 3.14341 16.0769 3.01495C20.2132 2.89693 24.1878 3.50983 28.2991 3.71976C38.9933 4.2658 49.362 5.25374 60.094 5.25374C67.731 5.25374 75.6026 6 97 6"
                     stroke="#A7EB7B"
                     strokeWidth="5"
                     strokeLinecap="round"
@@ -84,8 +84,8 @@ export default async function ProjectPage(props) {
                   </div>
 
                   {subheading.children.map((content) => {
-                    if (content.type === 'image') {
-                      console.log('Image URL:', content.src); // Add this line to log image URLs
+                    if (content.type === "image") {
+                      console.log("Image URL:", content.src); // Add this line to log image URLs
                       return (
                         <img
                           key={content.id}
@@ -94,9 +94,21 @@ export default async function ProjectPage(props) {
                           className={`mt-3 max-md:max-w-full ${content.className}`}
                         />
                       );
+                    } else if (content.type === "quote") {
+                      return (
+                        <blockquote
+                          key={content.id}
+                          className={`mt-3 max-md:max-w-full border-l-4 border-[#A7EB7B] pl-4 italic ${content.className}`}
+                        >
+                          {content.text}
+                        </blockquote>
+                      );
                     } else {
                       return (
-                        <div key={content.id} className={`mt-3 max-md:max-w-full ${content.className}`}>
+                        <div
+                          key={content.id}
+                          className={`mt-3 max-md:max-w-full ${content.className}`}
+                        >
                           {content.text}
                         </div>
                       );

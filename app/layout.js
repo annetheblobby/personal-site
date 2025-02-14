@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
     <svg
       className="fixed top-0 left-0 w-full h-full"
       style={{
-        zIndex: 1000,
+        zIndex: -10,
         pointerEvents: isDrawing ? "auto" : "none",
       }}
     >
@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
           key={lineIndex}
           d={`M ${line.map((p) => `${p.x} ${p.y}`).join(" L ")}`}
           stroke="#A7EB7B"
-          strokeWidth="3"
+          strokeWidth="20"
           fill="none"
           strokeLinecap="round"
           style={{ pointerEvents: "none" }}
@@ -92,7 +92,7 @@ export default function RootLayout({ children }) {
         <path
           d={`M ${currentLine.map((p) => `${p.x} ${p.y}`).join(" L ")}`}
           stroke="#A7EB7B"
-          strokeWidth="3"
+          strokeWidth="20"
           fill="none"
           strokeLinecap="round"
           style={{ pointerEvents: "none" }}
@@ -111,7 +111,11 @@ export default function RootLayout({ children }) {
         className={`${isExperimentsPage ? "bg-[#89AD24]" : "bg-[#FBF7F7]"} ${
           isHomePage ? "pencil-cursor" : ""
         } leading-relaxed`}
-        onMouseDown={handleMouseDown}
+        onMouseDown={(e) => {
+          if (!e.target.closest('a, button, [onclick], [role="button"]')) {
+            handleMouseDown(e);
+          }
+        }}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}

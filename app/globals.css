@@ -98,6 +98,19 @@ h1 {
   position: relative;
 }
 
+.design-technologist {
+  position: relative;
+}
+
+.design-technologist svg {
+  position: absolute;
+  top: 69px;
+  left: 104%;
+  vertical-align: middle;
+}
+
+
+
 .smiley-path {
   position: absolute;
   top: -42px;
@@ -131,13 +144,34 @@ h1 {
   animation-delay: 1s;
 }
 
+.design-technologist svg path:nth-child(1) {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-circle 0.5s ease-out forwards;
+  animation-delay: 2s;
+}
+
+.design-technologist svg path:nth-child(2) {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-circle 0.5s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+.design-technologist svg path:nth-child(3) {
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
+  animation: draw-circle 0.5s ease-out forwards;
+  animation-delay: 3s;
+}
+
 .circle-svg path {
   stroke-dasharray: 2200;
   /* Adjust this value based on the path length */
   stroke-dashoffset: 2200;
   /* Adjust this value based on the path length */
   animation: draw-circle 4s ease-out forwards;
-  animation-delay: 2s;
+  animation-delay: 4s;
 }
 
 @keyframes draw-circle {
