@@ -6,6 +6,7 @@ import materiality from "../works/images/materiality.jpg";
 import implementation from "../works/images/implementation.jpg";
 import candlegif from "../works/images/candlegif.gif";
 import togetherApart from "../works/images/togetherapart.png";
+import wtwMock from "../works/images/wtwmock.jpg";
 export const projects = [
   {
     id: "together-apart",
@@ -340,5 +341,67 @@ export const projects = [
       },
     ],
   },
+  {
+    id: 2,
+    title: "Shopify Checkout",
+    description: "Designing and developing accessible checkout experiences",
+    image: wtwMock.src,
+    tags: ["Design Systems", "Accessibility", "React", "TypeScript"],
+    sections: [
+      {
+        id: 1,
+        type: "section",
+        title: "Overview",
+        children: [
+          {
+            id: 1,
+            type: "paragraph",
+            text: "As a Design Technologist at Shopify, I work on making the checkout experience more accessible and user-friendly for millions of shoppers worldwide.",
+          }
+        ]
+      },
+      {
+        id: 2,
+        type: "section", 
+        title: "The Challenge",
+        children: [
+          {
+            id: 1,
+            type: "paragraph",
+            text: "Shopify's checkout needs to be accessible to everyone while maintaining high conversion rates and supporting complex merchant customizations.",
+          }
+        ]
+      },
+      {
+        id: 3,
+        type: "section",
+        title: "Process",
+        children: [
+          {
+            id: 1,
+            type: "paragraph",
+            text: "Working closely with designers, developers and researchers, we iterate on checkout components to ensure they meet WCAG guidelines while providing an optimal user experience.",
+          },
+          {
+            id: 2,
+            type: "paragraph", 
+            text: "Key focus areas include keyboard navigation, screen reader compatibility, and clear error messaging."
+          }
+        ]
+      },
+      {
+        id: 4,
+        type: "section",
+        title: "Impact",
+        children: [
+          {
+            id: 1,
+            type: "paragraph",
+            text: "Our accessibility improvements have helped make online shopping more inclusive while maintaining strong conversion rates for merchants.",
+          }
+        ]
+      }
+    ]
+  }
   // ... other projects
 ];

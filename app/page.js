@@ -36,7 +36,7 @@ const Project = ({ image, title, description, id }) => {
       <img
         loading="lazy"
         src={image}
-        className="mt-28 mr-44 max-w-full border border-black border-solid aspect-[1.47] w-[659px] max-md:mt-10 max-md:mr-2.5"
+        className="mt-8 max-w-full rounded aspect-[1.47] w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
       />
       <div className="flex flex-col px-2 py-px mt-4 max-md:max-w-full">
         <div className="font-medium text-stone-950 max-md:max-w-full">
@@ -145,9 +145,9 @@ export default function Home() {
     <div>
       <Header />
 
-      <div className="flex overflow-hidden flex-col items-center px-20 pt-40 pb-[990px] max-md:px-5 max-md:py-24">
-        <div className="flex flex-col items-start max-w-full w-[895px]">
-          <h1 className="w-[857px] max-md:mt-10 max-md:max-w-full text-stone-950 uppercase text-6xl font-medium max-md:text-4xl">
+      <div className="flex overflow-hidden flex-col items-center px-8 pt-40 pb-[990px] max-w-[1440px] mx-auto max-md:px-5 max-md:py-24">
+        <div className="flex flex-col items-start w-full">
+          <h1 className="max-w-[1000px] mb-20 max-md:mt-10 max-md:max-w-full text-stone-950 uppercase text-[90px] leading-none font-medium max-md:text-4xl">
             Hello, I'm <span className="name"> Anne! {smiley}</span>
             I'm a{" "}
             <span className="design-technologist">
@@ -158,8 +158,8 @@ export default function Home() {
               solutions
               <svg
                 className="circle-svg max-md:w-[300px]"
-                width="450"
-                height="69"
+                width="650"
+                height="120"
                 viewBox="0 0 505 69"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -175,10 +175,17 @@ export default function Home() {
             </span>{" "}
             that are user-focused and accessible.
           </h1>
+          {/* 
+          <h2 className="monoFont text-5xl mb-5">Works</h2>
+          <h2 className="monoFont text-5xl mb-5">blog</h2>
+          <h2 className="monoFont text-5xl mb-5">experiments</h2>
+          <h2 className="monoFont text-5xl mb-5">About</h2> */}
 
-          {projects.map((project) => (
-            <Project key={project.id} {...project} />
-          ))}
+          <div className="grid grid-cols-2 gap-8 w-full max-md:grid-cols-1">
+            {projects.map((project) => (
+              <Project key={project.id} {...project} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
