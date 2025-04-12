@@ -36,10 +36,10 @@ const Project = ({ image, title, description, id }) => {
       <img
         loading="lazy"
         src={image}
-        className="mt-8 max-w-full rounded aspect-[1.47] w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
+        className="mt-8 max-w-full border-2 aspect-[1.47] w-full max-md:mt-10 max-md:mr-2.5 grayscale border-slate-400 hover:grayscale-0 hover:border-slate-600 transition-all duration-300"
       />
       <div className="flex flex-col px-2 py-px mt-4 max-md:max-w-full">
-        <div className="font-medium text-stone-950 max-md:max-w-full">
+        <div className="font-medium text-stone-950 max-md:max-w-full monoFont uppercase">
           {title}
         </div>
         <div className="mt-1 font-light text-neutral-700 max-md:max-w-full">
@@ -53,30 +53,30 @@ const Project = ({ image, title, description, id }) => {
 export default function Home() {
   const smiley = (
     <svg
-      className="smiley-path max-md:top-[-80px]"
-      width="38"
-      height="34"
-      viewBox="0 0 38 34"
+      className="smiley-path max-md:top-[-100px]"
+      width="77"
+      height="72"
+      viewBox="0 0 77 72"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M5.28125 3.67383C5.28125 7.35509 6.11835 10.8157 6.11835 14.5561"
+        d="M10.8828 6.97852C11.0495 15.315 13.7124 23.4672 15.9482 31.2925"
         stroke="#A7EB7B"
-        strokeWidth="3"
-        strokeLinecap="round"
+        stroke-width="5"
+        stroke-linecap="round"
       />
       <path
-        d="M12.8145 2V13.7194"
+        d="M30.1328 2.92773C30.1328 13.2696 34.1851 23.2383 34.1851 33.3202"
         stroke="#A7EB7B"
-        strokeWidth="3"
-        strokeLinecap="round"
+        stroke-width="5"
+        stroke-linecap="round"
       />
       <path
-        d="M1.58984 24.2076C12.4344 23.1231 23.9511 22.7893 34.3657 19.154C34.8834 18.9733 36.4459 18.2954 35.1959 19.0097C34.1513 19.6066 33.9425 21.0192 33.5896 22.0779C32.8675 24.2442 31.9455 25.8695 30.1785 27.3841C25.1408 31.7021 19.0631 33.5892 12.4369 31.6616C8.35537 30.4742 2.56446 28.538 2.56446 23.5578"
+        d="M2.7793 51.5558C9.18451 58.2734 17.4631 68.0267 27.5435 68.7219C30.6384 68.9353 33.7843 68.7781 36.8864 68.7781C44.4097 68.7781 51.5481 66.7316 57.9359 62.6434C68.7236 55.7393 70.0685 44.1997 73.695 33.3203"
         stroke="#A7EB7B"
-        strokeWidth="3"
-        strokeLinecap="round"
+        stroke-width="5"
+        stroke-linecap="round"
       />
     </svg>
   );
@@ -141,6 +141,24 @@ export default function Home() {
     </svg>
   );
 
+  const line = (
+    <svg
+      className="line"
+      width="546"
+      height="46"
+      viewBox="0 0 546 46"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.9746 25.7613C18.2029 32.9896 38.1118 33.9877 47.4276 31.1929C58.2292 27.9524 67.4053 18.4116 78.5051 15.8502C96.3315 11.7364 118.904 20.4087 132.205 32.1448C138.656 37.8375 149.708 34.377 156.563 31.3609C163.092 28.488 168.759 24.2969 175.489 21.7297C182.739 18.9641 189.83 15.6278 196.991 12.6584C205.772 9.01782 220.348 15.1766 229.133 17.0261C235.386 18.3426 239.884 20.3109 245.036 23.7455C252.079 28.4411 265.405 30.1988 273.593 28.5611C282.941 26.6915 290.92 21.8813 299.015 16.9141C305.565 12.8948 312.617 10.6426 320.405 10.6426C331.304 10.6426 339.099 21.5251 349.299 23.1856C358.984 24.7622 372.565 25.4212 382 22.1776C395.378 17.579 407.464 13.0554 421.589 11.1465C430.413 9.95416 437.863 10.8152 445.163 15.6822C453.11 20.9801 461.171 24.6387 471.033 24.7534C475.883 24.8098 480.854 25.0229 485.704 24.7534C487.44 24.657 490.196 21.5082 491.975 20.7218C505.525 14.7348 520.334 15.6822 535.092 15.6822"
+        stroke="#A7EB7B"
+        stroke-width="20"
+        stroke-linecap="round"
+      />
+    </svg>
+  );
+
   return (
     <div>
       <Header />
@@ -151,9 +169,10 @@ export default function Home() {
             Hello, I'm <span className="name"> Anne! {smiley}</span>
             I'm a{" "}
             <span className="design-technologist">
-              {code}Design Technologist
+              Design Technologist
             </span>{" "}
-            @Shopify . I love tinkering on{" "}
+            <span className="shopify">@Shopify{line}</span> . I love tinkering
+            on{" "}
             <span className="circle-animation">
               solutions
               <svg

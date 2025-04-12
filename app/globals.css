@@ -109,12 +109,28 @@ h1 {
   vertical-align: middle;
 }
 
+.shopify {
+  position: relative;
+}
 
+.line {
+  position: absolute;
+  vertical-align: middle;
+  top: 70px;
+  z-index: -1;
+}
+
+.line path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-circle 1s ease-out forwards;
+  animation-delay: 3s;
+}
 
 .smiley-path {
   position: absolute;
-  top: -42px;
-  left: 57%;
+  top: -161px;
+  left: 80%;
   vertical-align: middle;
 }
 
@@ -136,9 +152,9 @@ h1 {
 }
 
 .smiley-path path:nth-child(3) {
-  stroke-dasharray: 100;
+  stroke-dasharray: 200;
   /* Adjust this value based on the path length */
-  stroke-dashoffset: 100;
+  stroke-dashoffset: 200;
   /* Adjust this value based on the path length */
   animation: draw-circle 0.5s ease-out forwards;
   animation-delay: 1s;
@@ -147,8 +163,8 @@ h1 {
 .design-technologist svg path:nth-child(1) {
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-  animation: draw-circle 0.5s ease-out forwards;
-  animation-delay: 2s;
+  animation: draw-circle 1s ease-out forwards;
+  animation-delay: 1.5s;
 }
 
 .design-technologist svg path:nth-child(2) {
@@ -211,3 +227,15 @@ h1 {
 .drop-animation {
   animation: drop 0.5s ease-out forwards;
 }
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+
+

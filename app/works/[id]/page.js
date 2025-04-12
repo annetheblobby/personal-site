@@ -3,6 +3,7 @@ import Link from "next/link";
 import ProjectDetailCard from "../../components/ProjectDetail";
 import BriefCard from "../../components/BriefCard";
 import { projects } from "../../data/worksData";
+import Image from "next/image";
 
 export default async function ProjectPage(props) {
   const params = await props.params;
@@ -37,11 +38,23 @@ export default async function ProjectPage(props) {
             ))}
           </div>
 
+          {project.cover && (
+            <div className="w-screen h-[60vh] relative mb-16 max-md:-mx-5 ml-[-50vw] left-[50%] right-[50%] mt-8">
+              <Image
+                src={project.cover}
+                alt={`${project.title} cover`}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
+
           <div className="flex flex-col self-stretch mt-36 w-full max-md:mt-10 max-md:max-w-full">
             <div className="text-3xl font-bold text-neutral-900 max-md:max-w-full monoFont">
               BRIEF
             </div>
-            <div className="flex flex-wrap gap-9 justify-center items-center mt-12 w-full text-lg text-neutral-700 max-md:mt-10 max-md:max-w-full">
+            <div className="flex flex-wrap gap-9 justify-center items-center mt-12 mb-12 text-lg text-neutral-700 max-md:mt-10 max-md:max-w-full">
               {project.brief.map((card) => (
                 <BriefCard key={card.id} {...card} />
               ))}
@@ -51,7 +64,7 @@ export default async function ProjectPage(props) {
           {project.bodyContents.map((section) => (
             <div
               key={section.id}
-              className="flex flex-col mt-24 max-w-full text-lg text-neutral-900 max-md:mt-10 mb-12"
+              className="flex flex-col mt-12 max-w-full text-lg text-neutral-900 max-md:mt-10 mb-12"
             >
               <div className="flex relative gap-2.5 items-start self-start font-bold whitespace-nowrap">
                 <svg
