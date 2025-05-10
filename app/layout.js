@@ -123,6 +123,7 @@ export default function RootLayout({ children }) {
       >
         <main>
           {isHomePage && <DrawingLayer />}
+          <Header />
           <div className="mx-auto max-w-[1440px] w-full">{children}</div>
         </main>
       </body>

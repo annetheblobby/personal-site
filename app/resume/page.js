@@ -5,7 +5,6 @@ import {
   researchData,
   educationData,
 } from "../data/resumeData";
-import Header from "../components/header";
 import emailjs from "@emailjs/browser";
 import { useState, useRef } from "react";
 import CanvasDraw from "react-canvas-draw";
@@ -45,7 +44,6 @@ export default function Resume() {
 
   return (
     <main>
-      <Header />
       <div
         className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[100px] max-md:mb-10 monoFont"
         role="main"

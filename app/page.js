@@ -1,10 +1,7 @@
 "use client";
-import Image from "next/image";
-import Header from "./components/header";
-import DrawingCanvas from "./components/DrawingCanvas";
-import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { projects } from "./data/worksData";
+import { ArticleCard } from "./components/ArticleCard";
 
 // const projects = [
 //   {
@@ -32,18 +29,18 @@ import { projects } from "./data/worksData";
 
 const Project = ({ image, title, description, id }) => {
   return (
-    <Link href={`/works/${id}`} className="block">
+    <Link href={`/works/${id}`} className="block relative">
       <img
         loading="lazy"
         src={image}
-        className="mt-8 max-w-full border-2 aspect-[1.47] w-full max-md:mt-10 max-md:mr-2.5 grayscale border-slate-400 hover:grayscale-0 hover:border-slate-600 transition-all duration-300"
+        className="mt-8 max-w-full border border-solid border-black w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
       />
+      <div className="absolute bottom-[46px] px-4 bg-lime-300 border border-black border-solid py-3 monoFont text-xs">
+        {description}
+      </div>
       <div className="flex flex-col px-2 py-px mt-4 max-md:max-w-full">
-        <div className="font-medium text-stone-950 max-md:max-w-full monoFont uppercase">
+        <div className="text-xl text-stone-950 max-md:max-w-full sansFont">
           {title}
-        </div>
-        <div className="mt-1 font-light text-neutral-700 max-md:max-w-full">
-          {description}
         </div>
       </div>
     </Link>
@@ -161,8 +158,6 @@ export default function Home() {
 
   return (
     <div>
-      <Header />
-
       <div className="flex overflow-hidden flex-col items-center px-8 pt-40 pb-[990px] max-w-[1440px] mx-auto max-md:px-5 max-md:py-24">
         <div className="flex flex-col items-start w-full">
           <h1 className="max-w-[1000px] mb-20 max-md:mt-10 max-md:max-w-full text-stone-950 uppercase text-[90px] leading-none font-medium max-md:text-4xl">

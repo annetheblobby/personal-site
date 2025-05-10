@@ -21,8 +21,9 @@ const UnderlineHover = () => (
   </svg>
 );
 
-export default function Header({ experimentMode = false }) {
+export default function Header() {
   const pathname = usePathname();
+  const experimentMode = pathname === "/experiments";
 
   const getLinkStyle = (path) => {
     const isActive = pathname === path;
@@ -35,26 +36,36 @@ export default function Header({ experimentMode = false }) {
     <div
       className={`flex gap-5 justify-between w-full whitespace-nowrap text-neutral-500 max-md:flex-wrap max-md:max-w-full py-4 sticky top-0 z-50 ${
         experimentMode ? `bg-none` : `bg-[#FBF7F7]`
-      } w-[895px]`}
+      } w-[895px] px-10`}
     >
       <Link href="/">
         <Logo />
       </Link>
       <div className="flex gap-5 my-auto max-md:flex-wrap max-md:max-w-full major-mono-display-regular">
+        1
         <div className="flex flex-auto gap-5 justify-between my-auto max-md:flex-wrap">
-          <Link href="/" className={getLinkStyle("/")}>
+          <Link href="/" className={`${getLinkStyle("/")} no-underline`}>
             WORK
             <UnderlineHover />
           </Link>
-          <Link className={getLinkStyle("/deepDives")} href="/deepDives">
+          <Link
+            className={`${getLinkStyle("/deepDives")} no-underline`}
+            href="/deepDives"
+          >
             DEEP DIVES
             <UnderlineHover />
           </Link>
-          <Link className={getLinkStyle("/experiments")} href="/experiments">
+          <Link
+            className={`${getLinkStyle("/experiments")} no-underline`}
+            href="/experiments"
+          >
             EXPERIMENTS
             <UnderlineHover />
           </Link>
-          <Link className={getLinkStyle("/resume")} href="/resume">
+          <Link
+            className={`${getLinkStyle("/resume")} no-underline`}
+            href="/resume"
+          >
             RESUME
             <UnderlineHover />
           </Link>

@@ -6,12 +6,12 @@ export default function ProjectDetailCard({
 }) {
   return (
     <div className="flex flex-col self-stretch w-[184px]">
-      <div className="flex relative flex-col w-full font-bold whitespace-nowrap">
-        <svg
-          className="object-contain absolute bottom-px z-0 shrink-0 -left-1 self-start"
-          width="78"
-          height="17"
+      <div className="flex relative flex-col font-bold whitespace-nowrap w-auto">
+        {/* <svg
+          className="object-contain absolute bottom-px z-0 shrink-0 -left-1 self-start w-full h-2"
           viewBox="0 0 78 17"
+          preserveAspectRatio="none"
+          width="100%"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -21,7 +21,7 @@ export default function ProjectDetailCard({
             strokeWidth="15"
             strokeLinecap="round"
           />
-        </svg>
+        </svg> */}
 
         <div className="z-0 monoFont">{title}</div>
       </div>

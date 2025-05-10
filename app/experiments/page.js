@@ -1,5 +1,4 @@
 "use client";
-import Header from "../components/header";
 import Image from "next/image";
 import tattote from "./images/tattote.png";
 import frame from "./images/frame.png";
@@ -22,7 +21,6 @@ export default function experiments() {
 
   return (
     <div className="relative">
-      <Header experimentMode={true} />
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[1700px] max-md:mb-10">
         <div className="flex flex-col items-start max-w-full w-[895px]">
           <div className="absolute left-[50%] top-[300px] max-md:relative max-md:left-0 max-md:w-full max-md:top-0 w-[300px] drop-animation">

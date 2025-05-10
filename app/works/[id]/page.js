@@ -1,4 +1,3 @@
-import Header from "../../components/header";
 import Link from "next/link";
 import ProjectDetailCard from "../../components/ProjectDetail";
 import BriefCard from "../../components/BriefCard";
@@ -23,7 +22,6 @@ export default async function ProjectPage(props) {
 
   return (
     <div>
-      <Header />
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[100px] max-md:mb-10">
         <div className="flex flex-col items-start max-w-full w-[895px]">
           <div className="flex flex-col max-w-full font-semibold uppercase text-zinc-800 w-[821px] max-md:text-4xl headerWorks">
@@ -54,7 +52,7 @@ export default async function ProjectPage(props) {
             <div className="text-3xl font-bold text-neutral-900 max-md:max-w-full monoFont">
               BRIEF
             </div>
-            <div className="flex flex-wrap gap-9 justify-center items-center mt-12 mb-12 text-lg text-neutral-700 max-md:mt-10 max-md:max-w-full">
+            <div className="flex flex-wrap gap-9 justify-center items-center mt-12 mb-12  text-lg text-neutral-700 max-md:mt-10 max-md:max-w-full">
               {project.brief.map((card) => (
                 <BriefCard key={card.id} {...card} />
               ))}

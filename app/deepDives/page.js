@@ -2,9 +2,7 @@ import * as React from "react";
 import { ArticleCard } from "../components/ArticleCard";
 import { CategoryNav } from "../components/CategoryNav";
 import { FeaturedArticle } from "../components/FeaturedArticle";
-import Header from "../components/header";
 import { blogs } from "../data/blogData";
-import Link from "next/link";
 
 const articles = [
   {
@@ -26,7 +24,6 @@ const articles = [
 function DeepDivesPage() {
   return (
     <div>
-      <Header />
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[1700px] max-md:mb-10">
         <div className="flex flex-col items-start max-w-full w-[895px]">
           <div className="flex flex-col items-start pr-20 max-w-full uppercase rounded-none text-zinc-800 w-[656px] max-md:pr-5">
