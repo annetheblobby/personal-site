@@ -1,4 +1,6 @@
+'use client';
 import * as React from "react";
+import { useState } from "react";
 import { ArticleCard } from "../components/ArticleCard";
 import { CategoryNav } from "../components/CategoryNav";
 import { FeaturedArticle } from "../components/FeaturedArticle";
@@ -22,6 +24,12 @@ const articles = [
 ];
 
 function DeepDivesPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredBlogs = blogs.filter((blog) => 
+    selectedCategory === "All" ? true : blog.category === selectedCategory
+  );
+
   return (
     <div>
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[1700px] max-md:mb-10">
@@ -33,10 +41,13 @@ function DeepDivesPage() {
             </div>
           </div>
           <div className="flex flex-col mt-32 w-full max-md:mt-10 max-md:max-w-full">
-            <CategoryNav />
+            <CategoryNav 
+              selectedCategory={selectedCategory}
+              onCategorySelect={setSelectedCategory}
+            />
             <div className="flex flex-col mt-14 w-full max-md:mt-10 max-md:max-w-full">
               <div className="flex flex-wrap gap-4 items-center w-full max-md:max-w-full">
-                {blogs.map((article) => {
+                {filteredBlogs.map((article) => {
                   return article.featured ? (
                     <FeaturedArticle
                       key={article.id}

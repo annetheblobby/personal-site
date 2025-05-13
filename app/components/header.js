@@ -42,7 +42,6 @@ export default function Header() {
         <Logo />
       </Link>
       <div className="flex gap-5 my-auto max-md:flex-wrap max-md:max-w-full major-mono-display-regular">
-        1
         <div className="flex flex-auto gap-5 justify-between my-auto max-md:flex-wrap">
           <Link href="/" className={`${getLinkStyle("/")} no-underline`}>
             WORK
