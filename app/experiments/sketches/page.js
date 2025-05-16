@@ -3,7 +3,6 @@ import Header from "../../components/header";
 export default function BlogPage() {
   return (
     <div>
-      <Header />
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[100px] max-md:mb-10">
         <div className="flex flex-col items-start max-w-full w-[895px]">
           {/* Blog Header */}

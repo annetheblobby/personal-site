@@ -14,6 +14,7 @@ export function FeaturedArticle({ image, category, title, tagline, href }) {
                 alt={`${title} thumbnail`}
                 className="z-0 w-full aspect-[1.41] object-cover"
               />
+
               <div className="overflow-hidden absolute bottom-0 left-0 gap-2.5 self-start px-4 py-3 bg-lime-300 border border-black border-solid h-[41px] min-h-[41px] monoFont text-xs">
                 {category}
               </div>

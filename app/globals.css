@@ -116,8 +116,8 @@ h1 {
 .line {
   position: absolute;
   vertical-align: middle;
-  top: 70px;
-  z-index: -1;
+  bottom: -20px;
+  z-index: 2;
 }
 
 .line path {

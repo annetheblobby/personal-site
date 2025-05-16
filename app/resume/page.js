@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { useEffect } from "react";
 import {
   experienceData,
   researchData,
@@ -18,6 +19,17 @@ export default function Resume() {
   const [messageSent, setMessageSent] = useState(false);
   const [color, setColor] = useState("#000000");
   const canvasRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -44,11 +56,8 @@ export default function Resume() {
 
   return (
     <main>
-      <div
-        className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[100px] max-md:mb-10 monoFont"
-        role="main"
-      >
-        <div className="flex flex-col w-full max-md:max-w-full ">
+      <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[1700px] max-md:mb-10 monoFont">
+        <div className="flex flex-col items-start max-w-full w-[895px]">
           <section
             className="flex flex-col max-w-full w-[1002px]"
             aria-labelledby="about-heading"
@@ -203,7 +212,7 @@ export default function Resume() {
                     />
                   </div>
 
-                  <div className="w-full">
+                  <div className="flex flex-col w-full">
                     <input
                       type="hidden"
                       name="drawing"
@@ -243,7 +252,8 @@ export default function Resume() {
                       brushRadius={2}
                       lazyRadius={0}
                       canvasHeight={368}
-                      className="border border-gray-800 h-64 w-full"
+                      canvasWidth={isMobile ? 350 : 400}
+                      className="border border-gray-800 h-64 w-full max-md:h-48 max-md:w-full"
                     />
                   </div>
                 </div>

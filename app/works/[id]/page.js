@@ -37,7 +37,7 @@ export default async function ProjectPage(props) {
           </div>
 
           {project.cover && (
-            <div className="w-screen h-[60vh] relative mb-16 max-md:-mx-5 ml-[-50vw] left-[50%] right-[50%] mt-8">
+            <div className="w-screen h-[60vh] relative mb-16 max-md:mb-10 max-md:h-[40vh] max-md:-mx-5 max-md:left-0 ml-[-50vw] left-[50%] right-[50%] mt-8">
               <Image
                 src={project.cover}
                 alt={`${project.title} cover`}

@@ -2,6 +2,8 @@
 import Logo from "../components/logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MdMenu } from "react-icons/md";
+import { useState, useEffect } from "react";
 
 const UnderlineHover = () => (
   <svg
@@ -24,6 +26,18 @@ const UnderlineHover = () => (
 export default function Header() {
   const pathname = usePathname();
   const experimentMode = pathname === "/experiments";
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const getLinkStyle = (path) => {
     const isActive = pathname === path;
@@ -33,43 +47,91 @@ export default function Header() {
   };
 
   return (
-    <div
-      className={`flex gap-5 justify-between w-full whitespace-nowrap text-neutral-500 max-md:flex-wrap max-md:max-w-full py-4 sticky top-0 z-50 ${
-        experimentMode ? `bg-none` : `bg-[#FBF7F7]`
-      } w-[895px] px-10`}
-    >
-      <Link href="/">
-        <Logo />
-      </Link>
-      <div className="flex gap-5 my-auto max-md:flex-wrap max-md:max-w-full major-mono-display-regular">
-        <div className="flex flex-auto gap-5 justify-between my-auto max-md:flex-wrap">
-          <Link href="/" className={`${getLinkStyle("/")} no-underline`}>
-            WORK
-            <UnderlineHover />
-          </Link>
-          <Link
-            className={`${getLinkStyle("/deepDives")} no-underline`}
-            href="/deepDives"
+    <div>
+      {isMobile ? (
+        <div
+          className={`flex flex-col gap-5 justify-between w-full whitespace-nowrap text-neutral-500 py-4 sticky top-0 z-50 ${
+            experimentMode ? `bg-none` : `bg-[#FBF7F7]`
+          } w-[895px] px-5`}
+        >
+          <div className="flex justify-between items-center w-full">
+            <Link href="/">
+              <Logo />
+            </Link>
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              <MdMenu className="md:hidden" size={24} />
+            </button>
+          </div>
+          <div
+            className={`${
+              menuOpen ? "flex" : "hidden"
+            } flex-col gap-5 my-auto items-end major-mono-display-regular`}
           >
-            DEEP DIVES
-            <UnderlineHover />
-          </Link>
-          <Link
-            className={`${getLinkStyle("/experiments")} no-underline`}
-            href="/experiments"
-          >
-            EXPERIMENTS
-            <UnderlineHover />
-          </Link>
-          <Link
-            className={`${getLinkStyle("/resume")} no-underline`}
-            href="/resume"
-          >
-            RESUME
-            <UnderlineHover />
-          </Link>
+            <Link href="/" className={`${getLinkStyle("/")} no-underline`}>
+              WORK
+              <UnderlineHover />
+            </Link>
+            <Link
+              className={`${getLinkStyle("/deepDives")} no-underline`}
+              href="/deepDives"
+            >
+              DEEP DIVES
+              <UnderlineHover />
+            </Link>
+            <Link
+              className={`${getLinkStyle("/experiments")} no-underline`}
+              href="/experiments"
+            >
+              EXPERIMENTS
+              <UnderlineHover />
+            </Link>
+            <Link
+              className={`${getLinkStyle("/resume")} no-underline`}
+              href="/resume"
+            >
+              RESUME
+              <UnderlineHover />
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div
+          className={`flex flex-row gap-5 justify-between w-full whitespace-nowrap text-neutral-500 py-4 sticky top-0 z-50 ${
+            experimentMode ? `bg-none` : `bg-[#FBF7F7]`
+          } w-[895px] px-10`}
+        >
+          <Link href="/">
+            <Logo />
+          </Link>
+          <div className="flex gap-5 my-auto items-center major-mono-display-regular">
+            <Link href="/" className={`${getLinkStyle("/")} no-underline`}>
+              WORK
+              <UnderlineHover />
+            </Link>
+            <Link
+              className={`${getLinkStyle("/deepDives")} no-underline`}
+              href="/deepDives"
+            >
+              DEEP DIVES
+              <UnderlineHover />
+            </Link>
+            <Link
+              className={`${getLinkStyle("/experiments")} no-underline`}
+              href="/experiments"
+            >
+              EXPERIMENTS
+              <UnderlineHover />
+            </Link>
+            <Link
+              className={`${getLinkStyle("/resume")} no-underline`}
+              href="/resume"
+            >
+              RESUME
+              <UnderlineHover />
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

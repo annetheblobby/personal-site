@@ -30,13 +30,15 @@ import { ArticleCard } from "./components/ArticleCard";
 const Project = ({ image, title, description, id }) => {
   return (
     <Link href={`/works/${id}`} className="block relative">
-      <img
-        loading="lazy"
-        src={image}
-        className="mt-8 max-w-full border border-solid border-black w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
-      />
-      <div className="absolute bottom-[46px] px-4 bg-lime-300 border border-black border-solid py-3 monoFont text-xs">
-        {description}
+      <div className="relative">
+        <img
+          loading="lazy"
+          src={image}
+          className="mt-8 max-w-full border border-solid border-black w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
+        />
+        <div className="absolute bottom-[0px] px-4 bg-lime-300 border border-black border-solid py-3 monoFont text-xs">
+          {description}
+        </div>
       </div>
       <div className="flex flex-col px-2 py-px mt-4 max-md:max-w-full">
         <div className="text-xl text-stone-950 max-md:max-w-full sansFont">
@@ -140,8 +142,8 @@ export default function Home() {
 
   const line = (
     <svg
-      className="line"
-      width="546"
+      className="line object-contain absolute"
+      width="100%"
       height="46"
       viewBox="0 0 546 46"
       fill="none"
