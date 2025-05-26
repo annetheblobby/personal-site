@@ -8,7 +8,7 @@ import sketch from "./images/sketch.png";
 import tree from "./images/tree.png";
 import puppet from "./images/puppet.png";
 import blob from "./images/blob.png";
-import painting from "./images/painting.png";
+import art from "./images/art.jpg";
 import vr from "./images/vr.png";
 
 import Link from "next/link";
@@ -24,11 +24,15 @@ export default function experiments() {
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[1700px] max-md:mb-10">
         <div className="flex flex-col items-start max-w-full w-[895px]">
           <div className="absolute left-[50%] top-[300px] max-md:relative max-md:left-0 max-md:w-full max-md:top-0 w-[300px] drop-animation">
-            <Image
-              src={tattote}
-              className="hover:scale-110 transition-transform duration-100"
-              alt="Tattote"
-            />
+            <Link
+              href="https://tattote.ca/"
+            >
+              <Image
+                src={tattote}
+                className="hover:scale-110 transition-transform duration-100"
+                alt="Tattote"
+              />
+            </Link>
           </div>
           <div className="absolute left-[10%] max-md:relative max-md:left-0 max-md:w-full w-[550px] z-10 drop-animation ">
             <Image
@@ -45,11 +49,15 @@ export default function experiments() {
             />
           </div>
           <div className="absolute left-[65%] top-[600px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[350px] drop-animation">
-            <Image
-              src={tote}
-              className="hover:scale-110 transition-transform duration-100"
-              alt="Tote"
-            />
+            <Link
+              href="https://tattote.ca/"
+            >
+              <Image
+                src={tote}
+                className="hover:scale-110 transition-transform duration-100"
+                alt="Tote"
+              />
+            </Link>
           </div>
           <Link
             href="/experiments/sketches"
@@ -76,18 +84,26 @@ export default function experiments() {
             />
           </div>
           <div className="absolute left-[55%] top-[1300px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[350px] drop-animation">
-            <Image
-              src={blob}
-              className="hover:scale-110 transition-transform duration-100 "
-              alt="Blob"
-            />
+            <Link
+              href="https://www.instagram.com/blob.by.design/"
+            >
+              <Image
+                src={blob}
+                className="hover:scale-110 transition-transform duration-100 "
+                alt="Blob"
+              />
+            </Link>
           </div>
           <div className="absolute left-[60%] top-[1000px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[350px] drop-animation">
-            <Image
-              src={painting}
-              className="hover:scale-110 transition-transform duration-100 rotateLeft"
-              alt="Painting"
-            />
+            <Link
+              href="https://www.instagram.com/blob.by.design/"
+            >
+              <Image
+                src={art}
+                className="hover:scale-110 transition-transform duration-100 rotateLeft"
+                alt="Painting"
+              />
+            </Link>
           </div>
           <div className="absolute left-[50%] top-[1000px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[150px] drop-animation">
             <Image
