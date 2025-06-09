@@ -1,13 +1,16 @@
+"use client";
+import { useState, use } from "react";
 import Link from "next/link";
 import ProjectDetailCard from "../../components/ProjectDetail";
 import BriefCard from "../../components/BriefCard";
 import { projects } from "../../data/worksData";
 import Image from "next/image";
+import PasswordProtection from "../../components/PasswordProtection";
 
-export default async function ProjectPage(props) {
-  const params = await props.params;
+export default function ProjectPage(props) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const params = use(props.params);
   const project = projects.find((p) => p.id === params.id);
-  console.log(project);
 
   if (!project) {
     return (
@@ -18,6 +21,10 @@ export default async function ProjectPage(props) {
         </Link>
       </div>
     );
+  }
+
+  if (project.isPasswordProtected && !isAuthenticated) {
+    return <PasswordProtection onSuccess={() => setIsAuthenticated(true)} />;
   }
 
   return (
@@ -98,12 +105,28 @@ export default async function ProjectPage(props) {
                     if (content.type === "image") {
                       console.log("Image URL:", content.src); // Add this line to log image URLs
                       return (
-                        <img
-                          key={content.id}
-                          src={content.src}
-                          alt={content.alt}
-                          className={`mt-3 max-md:max-w-full ${content.className}`}
-                        />
+                        <div className="w-full flex items-center justify-center overflow-hidden mt-8">
+                          <img
+                            key={content.id}
+                            src={content.src}
+                            alt={content.alt}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      );
+                    } else if (content.type === "video") {
+                      return (
+                        <div className="w-full flex items-center justify-center overflow-hidden bg-slate-900 rounded mt-8">
+                          <video
+                            key={content.id}
+                            src={content.src}
+                            className="w-full h-full object-contain"
+                            controls
+                            autoPlay={content.autoPlay}
+                            muted={content.muted}
+                            loop={content.loop}
+                          />
+                        </div>
                       );
                     } else if (content.type === "quote") {
                       return (

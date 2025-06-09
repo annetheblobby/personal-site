@@ -5,6 +5,7 @@ import "./globals.css";
 import { usePathname } from "next/navigation";
 import Header from "./components/header";
 import { useState, useEffect } from "react";
+import MovingBanner from "./components/MovingBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   const [lines, setLines] = useState([]);
   const [currentLine, setCurrentLine] = useState([]);
   const [overInteractiveElement, setOverInteractiveElement] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const handleMouseOver = (e) => {
@@ -66,6 +68,13 @@ export default function RootLayout({ children }) {
           return updatedLines;
         });
       }, 2000);
+    }
+  };
+
+  const handleMainClick = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => setIsAnimating(false), 300); // Match animation duration
     }
   };
 
@@ -123,8 +132,14 @@ export default function RootLayout({ children }) {
       >
         <main>
           {isHomePage && <DrawingLayer />}
+          <MovingBanner />
           <Header />
+          {/* <div
+            onClick={handleMainClick}
+            className={`${isAnimating ? "bounce-animation" : ""}`}
+          > */}
           <div className="mx-auto max-w-[1440px] w-full">{children}</div>
+          {/* </div> */}
         </main>
       </body>
     </html>

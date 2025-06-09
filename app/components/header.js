@@ -108,13 +108,13 @@ export default function Header() {
               WORK
               <UnderlineHover />
             </Link>
-            <Link
+            {/* <Link
               className={`${getLinkStyle("/deepDives")} no-underline`}
               href="/deepDives"
             >
               DEEP DIVES
               <UnderlineHover />
-            </Link>
+            </Link> */}
             <Link
               className={`${getLinkStyle("/experiments")} no-underline`}
               href="/experiments"

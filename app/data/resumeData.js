@@ -4,7 +4,7 @@ export const experienceData = [
     period: "2022-Current",
   },
   {
-    title: "Product Design Lead @ WaiveTheWait",
+    title: "Co-founder @ WaiveTheWait",
     period: "2019-2022",
   },
   {
