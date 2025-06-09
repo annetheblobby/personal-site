@@ -8,7 +8,7 @@ import {
 } from "../data/resumeData";
 import emailjs from "@emailjs/browser";
 import { useState, useRef } from "react";
-import CanvasDraw from "react-canvas-draw";
+// import CanvasDraw from "react-canvas-draw";
 import { FaUndo } from "react-icons/fa";
 
 emailjs.init({
@@ -17,8 +17,8 @@ emailjs.init({
 
 export default function Resume() {
   const [messageSent, setMessageSent] = useState(false);
-  const [color, setColor] = useState("#000000");
-  const canvasRef = useRef(null);
+  // const [color, setColor] = useState("#000000");
+  // const canvasRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -34,9 +34,9 @@ export default function Resume() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    const canvasData =
-      canvasRef.current.canvasContainer.children[1].toDataURL();
-    e.target.elements.drawing.value = canvasData;
+    // const canvasData =
+    //   canvasRef.current.canvasContainer.children[1].toDataURL();
+    // e.target.elements.drawing.value = canvasData;
 
     console.log(e.target);
 
@@ -45,7 +45,7 @@ export default function Resume() {
         console.log(result.text);
         setMessageSent(true);
         setTimeout(() => setMessageSent(false), 2000);
-        canvasRef.current.clear();
+        // canvasRef.current.clear();
         e.target.reset();
       },
       (error) => {
@@ -212,7 +212,7 @@ export default function Resume() {
                     />
                   </div>
 
-                  <div className="flex flex-col w-full">
+                  {/* <div className="flex flex-col w-full">
                     <input
                       type="hidden"
                       name="drawing"
@@ -255,7 +255,7 @@ export default function Resume() {
                       canvasWidth={isMobile ? 350 : 400}
                       className="border border-gray-800 h-64 w-full max-md:h-48 max-md:w-full"
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <button
                   type="submit"
