@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import tattote from "./images/tattote.png";
 import frame from "./images/frame.png";
 import guitar from "./images/guitar.png";
@@ -11,7 +10,6 @@ import blob from "./images/blob.png";
 import art from "./images/art.jpg";
 import vr from "./images/vr.png";
 import MovingBanner from "../components/MovingBanner";
-import Image from "next/image";
 
 import Link from "next/link";
 
