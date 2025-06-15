@@ -26,7 +26,7 @@ const articles = [
 function DeepDivesPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredBlogs = blogs.filter((blog) => 
+  const filteredBlogs = blogs.filter((blog) =>
     selectedCategory === "All" ? true : blog.category === selectedCategory
   );
 
@@ -37,11 +37,11 @@ function DeepDivesPage() {
           <div className="flex flex-col items-start pr-20 max-w-full uppercase rounded-none text-zinc-800 w-[656px] max-md:pr-5">
             <div className="text-4xl font-extralight monoFont">Deep Dives</div>
             <div className="mt-3.5 text-6xl font-semibold max-md:text-4xl monoFont">
-              let's get Specific.
+              let&apos;s get Specific.
             </div>
           </div>
           <div className="flex flex-col mt-32 w-full max-md:mt-10 max-md:max-w-full">
-            <CategoryNav 
+            <CategoryNav
               selectedCategory={selectedCategory}
               onCategorySelect={setSelectedCategory}
             />

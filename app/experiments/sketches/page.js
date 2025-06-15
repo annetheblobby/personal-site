@@ -88,7 +88,7 @@ export default function BlogPage() {
               <div className="mt-3 max-md:max-w-full">
                 Server Components offer several advantages: reduced client-side
                 JavaScript, improved initial page load, and better security
-                through server-side data access. They're particularly useful for
+                through server-side data access. They&apos;re particularly useful for
                 data-heavy applications and content-focused websites.
               </div>
             </div>
