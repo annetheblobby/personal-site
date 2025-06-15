@@ -1,16 +1,40 @@
 "use client";
-import { useState, use } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import ProjectDetailCard from "../../components/ProjectDetail";
 import BriefCard from "../../components/BriefCard";
 import { projects } from "../../data/worksData";
-import Image from "next/image";
 import PasswordProtection from "../../components/PasswordProtection";
 
-export default function ProjectPage(props) {
+export default function ProjectPage({ params: paramsPromise }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const params = use(props.params);
-  const project = projects.find((p) => p.id === params.id);
+  const [project, setProject] = useState(null);
+  const [params, setParams] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchParams() {
+      const resolvedParams = await paramsPromise;
+      setParams(resolvedParams);
+    }
+    fetchParams();
+  }, [paramsPromise]);
+
+  useEffect(() => {
+    if (params) {
+      const projectData = projects.find((p) => p.id === params.id);
+      setProject(projectData);
+      setLoading(false); // Set loading to false once the project is loaded
+    }
+  }, [params]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center px-20 pt-40">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   if (!project) {
     return (
@@ -45,12 +69,10 @@ export default function ProjectPage(props) {
 
           {project.cover && (
             <div className="w-screen h-[60vh] relative mb-16 max-md:mb-10 max-md:h-[40vh] max-md:-mx-5 max-md:left-0 ml-[-50vw] left-[50%] right-[50%] mt-8">
-              <Image
+              <img
                 src={project.cover}
                 alt={`${project.title} cover`}
-                fill
-                className="object-cover"
-                priority
+                className="object-cover w-full h-full"
               />
             </div>
           )}
@@ -103,11 +125,12 @@ export default function ProjectPage(props) {
 
                   {subheading.children.map((content) => {
                     if (content.type === "image") {
-                      console.log("Image URL:", content.src); // Add this line to log image URLs
                       return (
-                        <div className="w-full flex items-center justify-center overflow-hidden mt-8">
+                        <div
+                          key={content.id}
+                          className="w-full flex items-center justify-center overflow-hidden mt-8"
+                        >
                           <img
-                            key={content.id}
                             src={content.src}
                             alt={content.alt}
                             className="w-full h-full object-contain"
@@ -116,9 +139,11 @@ export default function ProjectPage(props) {
                       );
                     } else if (content.type === "video") {
                       return (
-                        <div className="w-full flex items-center justify-center overflow-hidden bg-slate-900 rounded mt-8">
+                        <div
+                          key={content.id}
+                          className="w-full flex items-center justify-center overflow-hidden bg-slate-900 rounded mt-8"
+                        >
                           <video
-                            key={content.id}
                             src={content.src}
                             className="w-full h-full object-contain"
                             controls

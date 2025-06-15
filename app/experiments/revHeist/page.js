@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Header from "../../components/header";
 import PasswordProtection from "../../components/PasswordProtection";
+import Image from "next/image";
 
 export default function RevHeist() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -97,7 +98,7 @@ export default function RevHeist() {
               <div className="mt-3 max-md:max-w-full">
                 Server Components offer several advantages: reduced client-side
                 JavaScript, improved initial page load, and better security
-                through server-side data access. They're particularly useful for
+                through server-side data access. They&apos;re particularly useful for
                 data-heavy applications and content-focused websites.
               </div>
             </div>

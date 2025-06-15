@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function BriefCard({
   image,
   imageAlt,
@@ -20,11 +21,10 @@ export default function BriefCard({
           loading="lazy"
           src={image}
           alt={imageAlt}
-          className={`object-contain ${hasShadow ? customStyle : ""} ${
-            title
-              ? "absolute top-2/4 left-2/4 z-0 self-start rounded-full -translate-x-2/4 -translate-y-2/4"
-              : ""
-          } aspect-square ${title ? "h-[250px] min-w-[240px] w-[250px]" : ""}`}
+          className={`object-contain ${hasShadow ? customStyle : ""} ${title
+            ? "absolute top-2/4 left-2/4 z-0 self-start rounded-full -translate-x-2/4 -translate-y-2/4"
+            : ""
+            } aspect-square ${title ? "h-[250px] min-w-[240px] w-[250px]" : ""}`}
         />
         {title && (
           <div className="flex z-0 flex-col my-8 mx-8 min-h-[107px] relative">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { blogs } from "../../data/blogData";
+import Image from "next/image";
 
 export default async function BlogPage(props) {
   const params = await props.params;

@@ -11,6 +11,7 @@ import blob from "./images/blob.png";
 import art from "./images/art.jpg";
 import vr from "./images/vr.png";
 import MovingBanner from "../components/MovingBanner";
+import Image from "next/image";
 
 import Link from "next/link";
 
@@ -26,7 +27,7 @@ export default function experiments() {
         <div className="flex flex-col items-start max-w-full w-[895px]">
           <div className="absolute left-[50%] top-[300px] max-md:relative max-md:left-0 max-md:w-full max-md:top-0 w-[300px] drop-animation">
             <Link href="https://tattote.ca/">
-              <Image
+              <img
                 src={tattote}
                 className="hover:scale-110 transition-transform duration-100"
                 alt="Tattote"
@@ -35,7 +36,7 @@ export default function experiments() {
           </div>
           <div className="absolute left-[10%] max-md:relative max-md:left-0 max-md:w-full w-[550px] z-10 drop-animation ">
             <Link href="/experiments/revHeist">
-              <Image
+              <img
                 src={frame}
                 className="hover:scale-110 transition-transform duration-100"
                 alt="Frame"
@@ -43,7 +44,7 @@ export default function experiments() {
             </Link>
           </div>
           <div className="absolute left-[40%] top-[400px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[650px] z-10 drop-animation">
-            <Image
+            <img
               src={guitar}
               className="hover:scale-110 transition-transform duration-100"
               alt="Guitar"
@@ -51,7 +52,7 @@ export default function experiments() {
           </div>
           <div className="absolute left-[65%] top-[600px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[350px] drop-animation">
             <Link href="https://tattote.ca/">
-              <Image
+              <img
                 src={tote}
                 className="hover:scale-110 transition-transform duration-100"
                 alt="Tote"
@@ -62,21 +63,21 @@ export default function experiments() {
             href="/experiments/sketches"
             className="absolute left-[25%] top-[650px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[450px] drop-animation"
           >
-            <Image
+            <img
               src={sketch}
               className="hover:scale-110 transition-transform duration-100"
               alt="Sketch"
             />
           </Link>
           <div className="absolute left-[10%] top-[900px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[250px] drop-animation">
-            <Image
+            <img
               src={tree}
               className="hover:scale-110 transition-transform duration-100"
               alt="Tree"
             />
           </div>
           <div className="absolute left-[25%] top-[1200px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[350px] drop-animation">
-            <Image
+            <img
               src={puppet}
               className="hover:scale-110 transition-transform duration-100 rotateLeft"
               alt="Puppet"
@@ -84,7 +85,7 @@ export default function experiments() {
           </div>
           <div className="absolute left-[55%] top-[1300px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[350px] drop-animation">
             <Link href="https://www.instagram.com/blob.by.design/">
-              <Image
+              <img
                 src={blob}
                 className="hover:scale-110 transition-transform duration-100 "
                 alt="Blob"
@@ -93,7 +94,7 @@ export default function experiments() {
           </div>
           <div className="absolute left-[60%] top-[1000px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[350px] drop-animation">
             <Link href="https://www.instagram.com/blob.by.design/">
-              <Image
+              <img
                 src={art}
                 className="hover:scale-110 transition-transform duration-100 rotateLeft"
                 alt="Painting"
@@ -101,7 +102,7 @@ export default function experiments() {
             </Link>
           </div>
           <div className="absolute left-[50%] top-[1000px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[150px] drop-animation">
-            <Image
+            <img
               src={vr}
               className="hover:scale-110 transition-transform duration-100"
               alt="VR"

@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function ArticleCard({ image, category, title, href }) {
   console.log("href", href);

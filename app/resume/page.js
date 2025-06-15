@@ -10,6 +10,7 @@ import emailjs from "@emailjs/browser";
 import { useState, useRef } from "react";
 // import CanvasDraw from "react-canvas-draw";
 import { FaUndo } from "react-icons/fa";
+import Image from "next/image";
 
 emailjs.init({
   publicKey: "Mm4TDs90nDOA5B3O9",
@@ -87,7 +88,7 @@ export default function Resume() {
             </div>
 
             <p className="mt-5 text-2xl tracking-wide text-black max-md:max-w-full">
-              I'm a Designer / Developer interested
+              I&apos;m a Designer / Developer interested
               <br />
               in designing and implementing products through multiple lens of
               view.
