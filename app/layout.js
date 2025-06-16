@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
   const [currentLine, setCurrentLine] = useState([]);
   const [overInteractiveElement, setOverInteractiveElement] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
 
   useEffect(() => {
     const handleMouseOver = (e) => {
@@ -35,6 +36,14 @@ export default function RootLayout({ children }) {
       document.removeEventListener("mouseover", handleMouseOver);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isHomePage) {
+      setIsPageTransitioning(true);
+      const timeout = setTimeout(() => setIsPageTransitioning(false), 500); // Match animation duration
+      return () => clearTimeout(timeout);
+    }
+  }, [pathname]);
 
   const handleMouseDown = (e) => {
     if (!overInteractiveElement && isHomePage) {
@@ -117,9 +126,8 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className={`${isExperimentsPage ? "bg-[#89AD24]" : "bg-[#FBF7F7]"} ${
-          isHomePage ? "pencil-cursor" : ""
-        } leading-relaxed`}
+        className={`${isExperimentsPage ? "bg-[#89AD24]" : "bg-[#FBF7F7]"} ${isHomePage ? "pencil-cursor" : ""
+          } leading-relaxed`}
         onMouseDown={(e) => {
           if (!e.target.closest('a, button, [onclick], [role="button"]')) {
             handleMouseDown(e);
@@ -130,16 +138,14 @@ export default function RootLayout({ children }) {
         onMouseLeave={handleMouseUp}
         style={{ userSelect: isDrawing ? "none" : "auto" }}
       >
-        <main>
+        <MovingBanner />
+        <main
+          className={`${!isHomePage && isPageTransitioning ? "float-up-animation" : ""
+            }`}
+        >
           {isHomePage && <DrawingLayer />}
-          <MovingBanner />
           <Header />
-          {/* <div
-            onClick={handleMainClick}
-            className={`${isAnimating ? "bounce-animation" : ""}`}
-          > */}
           <div className="mx-auto max-w-[1440px] w-full">{children}</div>
-          {/* </div> */}
         </main>
       </body>
     </html>
