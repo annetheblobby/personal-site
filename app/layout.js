@@ -126,8 +126,9 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className={`${isExperimentsPage ? "bg-[#89AD24]" : "bg-[#FBF7F7]"} ${isHomePage ? "pencil-cursor" : ""
-          } leading-relaxed`}
+        className={`${isExperimentsPage ? "bg-[#89AD24]" : "bg-[#FBF7F7]"} ${
+          isHomePage ? "pencil-cursor" : ""
+        } leading-relaxed`}
         onMouseDown={(e) => {
           if (!e.target.closest('a, button, [onclick], [role="button"]')) {
             handleMouseDown(e);
@@ -139,12 +140,14 @@ export default function RootLayout({ children }) {
         style={{ userSelect: isDrawing ? "none" : "auto" }}
       >
         <MovingBanner />
+        <Header />
         <main
-          className={`${!isHomePage && isPageTransitioning ? "float-up-animation" : ""
-            }`}
+          className={`${
+            !isHomePage && isPageTransitioning ? "float-up-animation" : ""
+          }`}
         >
           {isHomePage && <DrawingLayer />}
-          <Header />
+
           <div className="mx-auto max-w-[1440px] w-full">{children}</div>
         </main>
       </body>
