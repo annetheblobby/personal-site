@@ -141,16 +141,30 @@ export default function ProjectPage({ params: paramsPromise }) {
                       return (
                         <div
                           key={content.id}
-                          className="w-full flex items-center justify-center overflow-hidden bg-slate-900 rounded mt-8"
+                          className={`w-full flex items-center justify-center overflow-hidden rounded mt-8 ${
+                            content.className || ""
+                          }`}
                         >
-                          <video
-                            src={content.src}
-                            className="w-full h-full object-contain"
-                            controls
-                            autoPlay={content.autoPlay}
-                            muted={content.muted}
-                            loop={content.loop}
-                          />
+                          {content.src.includes("vimeo") ||
+                          content.src.includes("youtube") ? (
+                            <iframe
+                              src={content.src}
+                              className="w-full aspect-video"
+                              style={{ minHeight: "500px" }}
+                              frameBorder="0"
+                              allow="autoplay; fullscreen; picture-in-picture"
+                              allowFullScreen
+                            />
+                          ) : (
+                            <video
+                              src={content.src}
+                              className="w-full h-full object-contain"
+                              controls
+                              autoPlay={content.autoPlay}
+                              muted={content.muted}
+                              loop={content.loop}
+                            />
+                          )}
                         </div>
                       );
                     } else if (content.type === "quote") {
@@ -168,7 +182,16 @@ export default function ProjectPage({ params: paramsPromise }) {
                           key={content.id}
                           className={`mt-3 max-md:max-w-full ${content.className}`}
                         >
-                          {content.text}
+                          {typeof content.text === "string"
+                            ? content.text.split("\n").map((line, i) => (
+                                <span key={i}>
+                                  {line}
+                                  {i < content.text.split("\n").length - 1 && (
+                                    <br />
+                                  )}
+                                </span>
+                              ))
+                            : content.text}
                         </div>
                       );
                     }

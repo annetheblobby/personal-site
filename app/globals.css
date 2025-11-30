@@ -31,7 +31,7 @@
 } */
 body {
   background-color: #FBF7F7;
-  font-family: "Roboto", serif;
+  font-family: "Roboto", sans-serif;
 }
 
 @layer utilities {
@@ -228,22 +228,6 @@ h1 {
   animation: drop 0.5s ease-out forwards;
 }
 
-@keyframes float-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.float-up-animation {
-  animation: float-up 0.5s ease-out;
-}
-
 a {
   text-decoration: none;
 }
@@ -252,15 +236,18 @@ a:hover {
   text-decoration: none;
 }
 
+.dotted-grid-bg {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.3) 1px, transparent 2px);
+  background-size: 45px 45px;
+}
+
 @keyframes bounce-click {
   0% {
     transform: scale(1);
   }
-
   50% {
     transform: scale(0.98);
   }
-
   100% {
     transform: scale(1);
   }
@@ -274,7 +261,6 @@ a:hover {
   0% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-100%);
   }
@@ -284,7 +270,6 @@ a:hover {
   0% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-100%);
   }
@@ -297,3 +282,7 @@ a:hover {
 .animate-marquee2 {
   animation: marquee2 30s linear infinite;
 }
+
+
+
+

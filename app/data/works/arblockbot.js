@@ -145,7 +145,7 @@ export const projectData = {
               src: diagram.src,
             },
             {
-              id: 1,
+              id: 2,
               type: "paragraph",
               text: "Visual Programming: Block-based coding simplifies learning.\n\nAR Interactions: The robot moves within real-world spaces, enhancing immersion.\n\nOptimized for Mobile: A collapsible coding canvas improves usability for small screens.",
             },
@@ -180,17 +180,9 @@ export const projectData = {
             },
             {
               id: 3,
-              type: "paragraph",
-              text: (
-                <iframe
-                  src="https://player.vimeo.com/video/427623490"
-                  height="700"
-                  frameborder="0"
-                  allow="autoplay; fullscreen"
-                  allowfullscreen=""
-                  className="mt-12 mb-12"
-                ></iframe>
-              ),
+              type: "video",
+              src: "https://player.vimeo.com/video/427623490",
+              className: "mt-12 mb-12",
             },
           ],
         },

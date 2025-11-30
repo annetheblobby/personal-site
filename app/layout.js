@@ -45,6 +45,18 @@ export default function RootLayout({ children }) {
     }
   }, [pathname]);
 
+  // Apply dotted grid background after mount to avoid hydration mismatch
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const body = document.body;
+      if (isHomePage) {
+        body.classList.add("dotted-grid-bg");
+      } else {
+        body.classList.remove("dotted-grid-bg");
+      }
+    }
+  }, [isHomePage]);
+
   const handleMouseDown = (e) => {
     if (!overInteractiveElement && isHomePage) {
       e.preventDefault();
@@ -55,15 +67,21 @@ export default function RootLayout({ children }) {
   };
 
   const handleMouseMove = (e) => {
-    if (isDrawing && !overInteractiveElement && isHomePage) {
+    if (isDrawing && isHomePage) {
       e.preventDefault();
       const point = { x: e.clientX, y: e.clientY };
       setCurrentLine((prev) => [...prev, point]);
     }
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e) => {
     if (isDrawing && isHomePage) {
+      // Add the final point if mouse is still moving
+      if (e) {
+        const finalPoint = { x: e.clientX, y: e.clientY };
+        setCurrentLine((prev) => [...prev, finalPoint]);
+      }
+
       const newLine = currentLine;
       setLines((prev) => [...prev, newLine]);
       setCurrentLine([]);
@@ -92,7 +110,7 @@ export default function RootLayout({ children }) {
       className="fixed top-0 left-0 w-full h-full"
       style={{
         zIndex: -10,
-        pointerEvents: isDrawing ? "auto" : "none",
+        pointerEvents: "none",
       }}
     >
       {lines.map((line, lineIndex) => (
@@ -100,9 +118,10 @@ export default function RootLayout({ children }) {
           key={lineIndex}
           d={`M ${line.map((p) => `${p.x} ${p.y}`).join(" L ")}`}
           stroke="#A7EB7B"
-          strokeWidth="20"
+          strokeWidth="8"
           fill="none"
           strokeLinecap="round"
+          strokeLinejoin="round"
           style={{ pointerEvents: "none" }}
         />
       ))}
@@ -110,9 +129,10 @@ export default function RootLayout({ children }) {
         <path
           d={`M ${currentLine.map((p) => `${p.x} ${p.y}`).join(" L ")}`}
           stroke="#A7EB7B"
-          strokeWidth="20"
+          strokeWidth="8"
           fill="none"
           strokeLinecap="round"
+          strokeLinejoin="round"
           style={{ pointerEvents: "none" }}
         />
       )}
@@ -129,15 +149,14 @@ export default function RootLayout({ children }) {
         className={`${isExperimentsPage ? "bg-[#89AD24]" : "bg-[#FBF7F7]"} ${
           isHomePage ? "pencil-cursor" : ""
         } leading-relaxed`}
-        onMouseDown={(e) => {
-          if (!e.target.closest('a, button, [onclick], [role="button"]')) {
-            handleMouseDown(e);
-          }
-        }}
+        onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
-        style={{ userSelect: isDrawing ? "none" : "auto" }}
+        style={{
+          userSelect: isDrawing ? "none" : "auto",
+        }}
+        suppressHydrationWarning={true}
       >
         <MovingBanner />
         <Header />

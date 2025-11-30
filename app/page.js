@@ -15,9 +15,9 @@ const Project = ({ image, title, description, id }) => {
           alt={`${title} cover`} // Add meaningful alt text
           width={410}
           height={410}
-          className="mt-8 h-[410px] max-w-full border border-solid border-black w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
+          className="mt-8 h-[410px] max-w-full border-[2px] border-solid border-gray-900 w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
         />
-        <div className="absolute bottom-[0px] px-4 bg-lime-300 border border-black border-solid py-3 monoFont text-xs">
+        <div className="absolute bottom-[0px] px-4 bg-lime-300 border-[2px] border-solid border-gray-900 py-3 monoFont text-xs">
           {description}
         </div>
       </div>
@@ -106,7 +106,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex overflow-hidden flex-col items-center px-8 pt-40 pb-[990px] max-w-[1440px] mx-auto max-md:px-5 max-md:py-24">
+      <div className="flex overflow-hidden flex-col items-center px-8 pt-[150px] pb-[990px] max-w-[1440px] mx-auto max-md:px-5 max-md:py-24">
         <div className="flex flex-col items-start w-full">
           <h1 className="max-w-[1000px] mb-20 max-md:mt-10 max-md:max-w-full text-stone-950 uppercase text-[90px] leading-none font-medium max-md:text-4xl">
             Hello, I&apos;m <span className="name"> Anne! {smiley}</span>
@@ -135,13 +135,18 @@ export default function Home() {
                 />
               </svg>
             </span>{" "}
-            that are user-focused and accessible.
           </h1>
 
-          <div className="grid grid-cols-2 gap-8 w-full max-md:grid-cols-1">
-            {projects.map((project) => (
-              <Project key={project.id} {...project} />
-            ))}
+          <div className="mt-3">
+            <h2 className="text-4xl monoFont uppercase text-zinc-800 max-md:max-w-full z-10 tracking-tight">
+              <span className="">/</span> CASE STUDIES
+            </h2>
+
+            <div className="grid grid-cols-2 gap-8 w-full max-md:grid-cols-1">
+              {projects.map((project) => (
+                <Project key={project.id} {...project} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
