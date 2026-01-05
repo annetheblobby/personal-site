@@ -158,7 +158,7 @@ export default function RootLayout({ children }) {
         }}
         suppressHydrationWarning={true}
       >
-        <MovingBanner />
+        {/* <MovingBanner /> */}
         <Header />
         <main
           className={`${

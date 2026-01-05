@@ -11,6 +11,7 @@ export default function ProjectPage({ params: paramsPromise }) {
   const [project, setProject] = useState(null);
   const [params, setParams] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [expandedImage, setExpandedImage] = useState(null);
 
   useEffect(() => {
     async function fetchParams() {
@@ -27,6 +28,24 @@ export default function ProjectPage({ params: paramsPromise }) {
       setLoading(false); // Set loading to false once the project is loaded
     }
   }, [params]);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        setExpandedImage(null);
+      }
+    };
+    if (expandedImage) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [expandedImage]);
 
   if (loading) {
     return (
@@ -53,6 +72,40 @@ export default function ProjectPage({ params: paramsPromise }) {
 
   return (
     <div>
+      {/* Expanded Image Modal */}
+      {expandedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+          onClick={() => setExpandedImage(null)}
+        >
+          <button
+            onClick={() => setExpandedImage(null)}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            aria-label="Close"
+          >
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <img
+            src={expandedImage.src}
+            alt={expandedImage.alt}
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[100px] max-md:mb-10">
         <div className="flex flex-col items-start max-w-full w-[895px]">
           <div className="flex flex-col max-w-full font-semibold uppercase text-zinc-800 w-[821px] max-md:text-4xl headerWorks">
@@ -68,12 +121,43 @@ export default function ProjectPage({ params: paramsPromise }) {
           </div>
 
           {project.cover && (
-            <div className="w-screen h-[60vh] relative mb-16 max-md:mb-10 max-md:h-[40vh] max-md:-mx-5 max-md:left-0 ml-[-50vw] left-[50%] right-[50%] mt-8">
-              <img
-                src={project.cover}
-                alt={`${project.title} cover`}
-                className="object-cover w-full h-full"
-              />
+            <div className="w-screen h-[60vh] relative mb-16 max-md:mb-10 max-md:h-[40vh] max-md:-mx-5 max-md:left-0 ml-[-50vw] left-[50%] right-[50%] mt-8 bg-[#444444] group">
+              {project.coverType === "video" || project.cover?.endsWith(".mp4") || project.cover?.endsWith(".webm") || project.cover?.endsWith(".mov") ? (
+                <video
+                  src={project.cover}
+                  className="w-full h-full"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <>
+                  <img
+                    src={project.cover}
+                    alt={`${project.title} cover`}
+                    className="object-cover w-full h-full cursor-pointer"
+                  />
+                  <button
+                    onClick={() => setExpandedImage({ src: project.cover, alt: `${project.title} cover` })}
+                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black bg-opacity-60 hover:bg-opacity-80 p-2 rounded-full"
+                    aria-label="Expand image"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    </svg>
+                  </button>
+                </>
+              )}
             </div>
           )}
 
@@ -128,13 +212,31 @@ export default function ProjectPage({ params: paramsPromise }) {
                       return (
                         <div
                           key={content.id}
-                          className="w-full flex items-center justify-center overflow-hidden mt-8"
+                          className="relative w-full flex items-center justify-center overflow-hidden mt-8 group"
                         >
                           <img
                             src={content.src}
                             alt={content.alt}
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain cursor-pointer"
                           />
+                          <button
+                            onClick={() => setExpandedImage({ src: content.src, alt: content.alt })}
+                            className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black bg-opacity-60 hover:bg-opacity-80 p-2 rounded-full"
+                            aria-label="Expand image"
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                            </svg>
+                          </button>
                         </div>
                       );
                     } else if (content.type === "video") {

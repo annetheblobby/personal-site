@@ -47,12 +47,10 @@ export default function Header() {
   };
 
   return (
-    <div>
+    <header className="sticky top-0 z-50 w-full">
       {isMobile ? (
         <div
-          className={`flex flex-col gap-5 justify-between w-full whitespace-nowrap text-neutral-500 py-4 sticky top-0 z-50 ${
-            experimentMode ? `bg-none` : `bg-[#FBF7F7]`
-          } w-[895px] px-5`}
+          className={`flex flex-col gap-5 justify-between w-full whitespace-nowrap text-neutral-500 py-4 px-5`}
         >
           <div className="flex justify-between items-center w-full">
             <Link href="/">
@@ -96,9 +94,7 @@ export default function Header() {
         </div>
       ) : (
         <div
-          className={`flex flex-row gap-5 justify-between w-full whitespace-nowrap text-neutral-500 py-4 sticky top-0 z-50 ${
-            experimentMode ? `bg-none` : `bg-[#FBF7F7]`
-          } w-[895px] px-10`}
+          className={`flex flex-row gap-5 justify-between w-full whitespace-nowrap text-neutral-500 py-4 px-10`}
         >
           <Link href="/">
             <Logo />
@@ -132,6 +128,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }

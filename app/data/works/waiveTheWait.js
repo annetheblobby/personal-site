@@ -5,7 +5,7 @@ export const projectData = {
   id: "waive-the-wait",
   image: waiveTheWait.src, // You'll need to import this image
   title: "WaiveTheWait: Smart Room",
-  description: "UX Design, Startup, Healthcare",
+  description: ["UX Design", "Startup", "Healthcare"],
   cover: waiveTheWaitCover.src,
   details: [
     {

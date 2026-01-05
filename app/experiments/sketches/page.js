@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function BlogPage() {
+export default function Sketches() {
   return (
     <div>
       <div className="flex flex-col items-center px-20 pt-40 max-md:px-5 max-md:py-24 mb-[100px] max-md:mb-10">
@@ -28,71 +28,11 @@ export default function BlogPage() {
               </h1>
             </div>
             <p className="mt-4 text-xl text-zinc-600">
-              A deep dive into the future of React and server-side rendering
+              Page in Progress
             </p>
-            <div className="mt-4 text-sm text-zinc-500">March 15, 2024</div>
+
           </div>
 
-          {/* Cover Image */}
-          <div className="w-full mt-8">
-            <img
-              src="/images/react-server-components.jpg"
-              alt="Understanding React Server Components"
-              className="w-full h-auto rounded-lg"
-            />
-          </div>
-
-          {/* Blog Content */}
-          <div className="flex flex-col mt-36 max-w-full text-lg text-neutral-900 max-md:mt-10 mb-20">
-            <div className="flex relative gap-2.5 items-start self-start font-bold whitespace-nowrap">
-              <svg
-                className="object-contain absolute bottom-px left-0.5 z-0 shrink-0 self-start w-[80px]"
-                width="86"
-                height="9"
-                viewBox="0 0 86 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 3.01495C7.73264 4.19981 11.5751 3.14341 16.0769 3.01495C20.2132 2.89693 24.1878 3.50983 28.2991 3.71976C38.9933 4.2658 49.362 5.25374 60.094 5.25374C67.731 5.25374 75.6026 6 83 6"
-                  stroke="#A7EB7B"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <div className="z-0 my-auto monoFont">Introduction</div>
-            </div>
-
-            <div className="flex flex-col mt-3.5 w-full max-md:max-w-full mb-8">
-              <div className="max-md:max-w-full">
-                <span className="text-3xl font-bold text-neutral-900">
-                  What are React Server Components?
-                </span>
-              </div>
-
-              <div className="mt-3 max-md:max-w-full">
-                React Server Components (RSC) represent a paradigm shift in how
-                we build React applications. They allow components to run
-                exclusively on the server, reducing the JavaScript bundle sent
-                to the client and enabling direct access to backend resources.
-              </div>
-            </div>
-
-            <div className="flex flex-col mt-3.5 w-full max-md:max-w-full mb-8">
-              <div className="max-md:max-w-full">
-                <span className="text-3xl font-bold text-neutral-900">
-                  Key Benefits
-                </span>
-              </div>
-
-              <div className="mt-3 max-md:max-w-full">
-                Server Components offer several advantages: reduced client-side
-                JavaScript, improved initial page load, and better security
-                through server-side data access. They&apos;re particularly
-                useful for data-heavy applications and content-focused websites.
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

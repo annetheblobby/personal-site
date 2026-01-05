@@ -2,12 +2,16 @@ import tutorialCover from "../../works/images/tutorial-cover.png"; // Add actual
 import validation from "../../works/images/introspection.png"; // Add actual image
 import overview from "../../works/images/overview-component.png"; // Add actual image
 import a11y from "../../works/images/a11y.png"; // Add actual image
+import onecol from "../../works/images/onecol.png";
+import mdx from "../../works/images/mdx.png";
 
 export const projectData = {
   id: "tutorials",
   title: "Tutorials on Shopify.dev",
-  description: "Frontend Development, Documentation",
+  description: ["Development", "Prototyping"],
   image: tutorialCover.src,
+  cover: "/tutorialcover.webm",
+  coverType: "video",
   isPasswordProtected: true,
   details: [
     {
@@ -85,6 +89,12 @@ export const projectData = {
               type: "paragraph",
               text: "Using markdown with custom Liquid tags presented significant challenges. Liquid, a Shopify-specific template language built on Ruby, uses objects, tags, and filters inside template files to display dynamic content. The basic layout made functionality extension difficult, and Liquid tags proved challenging for non-technical authors to learn.",
             },
+            {
+              id: 2,
+              type: "image",
+              src: onecol.src,
+              alt: "One-column layout",
+            },
           ],
         },
       ],
@@ -102,7 +112,7 @@ export const projectData = {
             {
               id: 1,
               type: "paragraph",
-              text: "Templates must be easy to author. To design an authorship platform that truly works for our authors, it's important to make them feel empowered and productive. This means creating a system that boosts their efficiency while keeping it tough to make mistakes.",
+              text: "Templates must be easy to author. To design an authorship platform that truly works for our authors, it's important to make them feel empowered and productive. This means creating a system that boosts their efficiency while keeping it tough to make mistakes and easy to create interactive layouts behind the scenes.",
             },
             {
               id: 2,
@@ -146,7 +156,13 @@ export const projectData = {
             {
               id: 1,
               type: "paragraph",
-              text: "MDX is part of the Unified ecosystem, allowing us to transform and compile content using ASTs (Abstract Syntax Trees). We used remark plugins to inspect and validate the AST structure of MDX files.",
+              text: "MDX is part of the Unified ecosystem, allowing us to transform and compile content using ASTs (Abstract Syntax Trees). This enables easy authorship of complicated layouts like the two-column layout with markdown and embedded markdown components. We then transform the file into two columns with remark plugins.",
+            },
+            {
+              id: 2,
+              type: "image",
+              src: mdx.src,
+              alt: "MDX",
             },
             // {
             //   id: 2,
@@ -165,7 +181,7 @@ export const projectData = {
             {
               id: 1,
               type: "paragraph",
-              text: "The two-column layout introduced accessibility challenges that required careful consideration. We conducted extensive testing with NVDA and JAWS users through Fable interviews.",
+              text: "The two-column layout introduced accessibility challenges that required careful consideration, such as left to right column focus switching. I lead an initiative to conduct extensive testing with NVDA and JAWS users through Fable interviews with developers who use assistive technologies. This lead to me creating a map of all the accessibilty features we needed to fix and prioritize in tickets.",
             },
             {
               id: 2,

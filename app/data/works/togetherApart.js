@@ -11,7 +11,7 @@ export const projectData = {
   id: "together-apart",
   image: togetherApartImage.src,
   title: "Together Apart: Redefining Remote Co-Dining Interactions",
-  description: "UX research, prototyping",
+  description: ["Research"],
   // Add more detailed content for the project page
   brief: [
     {

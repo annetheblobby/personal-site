@@ -104,8 +104,7 @@ h1 {
 
 .design-technologist svg {
   position: absolute;
-  top: 69px;
-  left: 104%;
+  top: 84px;
   vertical-align: middle;
 }
 
@@ -121,9 +120,9 @@ h1 {
 }
 
 .line path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: draw-circle 1s ease-out forwards;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw-circle 2s ease-out forwards;
   animation-delay: 3s;
 }
 
@@ -161,25 +160,14 @@ h1 {
 }
 
 .design-technologist svg path:nth-child(1) {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
   animation: draw-circle 1s ease-out forwards;
-  animation-delay: 1.5s;
+  animation-delay: 2s;
+  top: 50px;
 }
 
-.design-technologist svg path:nth-child(2) {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: draw-circle 0.5s ease-out forwards;
-  animation-delay: 2.5s;
-}
 
-.design-technologist svg path:nth-child(3) {
-  stroke-dasharray: 2200;
-  stroke-dashoffset: 2200;
-  animation: draw-circle 0.5s ease-out forwards;
-  animation-delay: 3s;
-}
 
 .circle-svg path {
   stroke-dasharray: 2200;
@@ -188,6 +176,7 @@ h1 {
   /* Adjust this value based on the path length */
   animation: draw-circle 4s ease-out forwards;
   animation-delay: 4s;
+
 }
 
 @keyframes draw-circle {

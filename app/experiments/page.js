@@ -108,7 +108,7 @@ export default function experiments() {
               />
             </Link>
           </div>
-          <div className="absolute left-[50%] top-[1000px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[150px] drop-animation">
+          {/* <div className="absolute left-[50%] top-[1000px] max-md:relative max-md:left-0 max-md:top-0 max-md:w-full w-[150px] drop-animation">
             <Link href="/experiments/vr">
               <Image
                 src="/images/vr.png"
@@ -118,7 +118,7 @@ export default function experiments() {
                 alt="VR"
               />
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

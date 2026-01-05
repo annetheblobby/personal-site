@@ -6,7 +6,7 @@ export const projectData = {
   id: "blockbot",
   image: blockbot.src,
   title: "BlockBot: Making Robotics Accessible with AR",
-  description: "AR/VR, Education, UI/UX, Mobile",
+  description: ["AR/VR", "Education", "Development", "Personal Project"],
   imageAlt: "BlockBot",
   cover: blockbotcover.src,
   details: [

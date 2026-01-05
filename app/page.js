@@ -6,6 +6,10 @@ import { projects as staticProjects } from "./data/worksData";
 import { ArticleCard } from "./components/ArticleCard";
 
 const Project = ({ image, title, description, id }) => {
+  const descriptionText = Array.isArray(description) 
+    ? description.join(", ") 
+    : description;
+  
   return (
     <Link href={`/works/${id}`} className="block relative">
       <div className="relative">
@@ -15,10 +19,10 @@ const Project = ({ image, title, description, id }) => {
           alt={`${title} cover`} // Add meaningful alt text
           width={410}
           height={410}
-          className="mt-8 h-[410px] max-w-full border-[2px] border-solid border-gray-900 w-full max-md:mt-10 max-md:mr-2.5 grayscale hover:grayscale-0 transition-all duration-300"
+          className="mt-8 aspect-square h-[410px] max-w-full border-[2px] border-solid border-gray-900 w-full max-md:mt-10 max-md:mr-2.5 max-md:h-auto grayscale hover:grayscale-0 transition-all duration-300 object-cover"
         />
         <div className="absolute bottom-[0px] px-4 bg-lime-300 border-[2px] border-solid border-gray-900 py-3 monoFont text-xs">
-          {description}
+          {descriptionText}
         </div>
       </div>
       <div className="flex flex-col px-2 py-px mt-4 max-md:max-w-full">
@@ -33,12 +37,44 @@ const Project = ({ image, title, description, id }) => {
 export default function Home() {
   const [projects, setProjects] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedFilter, setSelectedFilter] = useState("ALL");
 
   useEffect(() => {
     // Simulate fetching projects (if dynamic)
     setProjects(staticProjects);
     setLoading(false);
   }, []);
+
+  // Map description tags to all matching filter categories
+  const getProjectCategories = (description) => {
+    if (!description || !Array.isArray(description)) return [];
+    
+    const descLower = description.map(d => d.toLowerCase()).join(" ");
+    const categories = [];
+    
+    // Check UX
+    if (descLower.includes("ux") || descLower.includes("ui/ux") || descLower.includes("ux design")) {
+      categories.push("UX");
+    }
+    // Check for research
+    if (descLower.includes("ux research") || descLower.includes("research")) {
+      categories.push("RESEARCH");
+    }
+    // Check for development
+    if (descLower.includes("development") || descLower.includes("frontend") || descLower.includes("ar/vr") || descLower.includes("mobile") || descLower.includes("documentation") || descLower.includes("prototyping")) {
+      categories.push("DEVELOPMENT");
+    }
+    
+    return categories;
+  };
+
+  // Filter projects based on selected category
+  const filteredProjects = projects?.filter((project) => {
+    if (selectedFilter === "ALL") return true;
+    
+    const projectCategories = getProjectCategories(project.description);
+    return projectCategories.includes(selectedFilter);
+  }) || [];
 
   if (loading) {
     return (
@@ -104,17 +140,36 @@ export default function Home() {
     </svg>
   );
 
+  const underline = (
+    <svg
+     className="object-contain absolute max-md:hidden"
+      width="100%"
+      height="32"
+      viewBox="0 0 388 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 21.747C99.7647 17.7075 189.346 11.4684 279.201 11.4684C311.868 11.4684 344.465 10 377.092 10"
+        stroke="#A7EB7B"
+        strokeWidth="20"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+
   return (
     <div>
-      <div className="flex overflow-hidden flex-col items-center px-8 pt-[150px] pb-[990px] max-w-[1440px] mx-auto max-md:px-5 max-md:py-24">
+      <div className="flex overflow-hidden flex-col items-center px-8 pt-[150px] pb-[200px] max-w-[1440px] mx-auto max-md:px-5 max-md:py-24">
         <div className="flex flex-col items-start w-full">
           <h1 className="max-w-[1000px] mb-20 max-md:mt-10 max-md:max-w-full text-stone-950 uppercase text-[90px] leading-none font-medium max-md:text-4xl">
             Hello, I&apos;m <span className="name"> Anne! {smiley}</span>
             I&apos;m a{" "}
             <span className="design-technologist">
-              Design Technologist
-            </span>{" "}
-            <span className="shopify">@Shopify{line}</span> . I love tinkering
+              Design {underline}
+            </span>{" "} Technologist {" "} 
+            <span className="shopify">@Shopify{line}</span> . 
+            {/* I love tinkering
             on{" "}
             <span className="circle-animation">
               solutions
@@ -134,18 +189,43 @@ export default function Home() {
                   strokeLinecap="round"
                 />
               </svg>
-            </span>{" "}
+            </span>{" "} */}
           </h1>
 
-          <div className="mt-3">
-            <h2 className="text-4xl monoFont uppercase text-zinc-800 max-md:max-w-full z-10 tracking-tight">
+          <div className="mt-3 w-full">
+            <h2 className="text-2xl monoFont uppercase text-zinc-800 max-md:max-w-full z-10 tracking-tight">
               <span className="">/</span> CASE STUDIES
             </h2>
 
-            <div className="grid grid-cols-2 gap-8 w-full max-md:grid-cols-1">
-              {projects.map((project) => (
-                <Project key={project.id} {...project} />
+            {/* Filter Buttons */}
+            <div className="flex gap-4 mt-6 mb-8 flex-wrap">
+              {["ALL", "UX", "DEVELOPMENT", "RESEARCH"].map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setSelectedFilter(filter)}
+                  className={`px-6 py-2 monoFont text-sm uppercase border-2 border-solid border-gray-900 transition-all ${
+                    selectedFilter === filter
+                      ? "bg-lime-300 text-stone-950 font-bold"
+                      : "bg-transparent text-stone-950 hover:bg-lime-300"
+                  }`}
+                >
+                  {filter}
+                </button>
               ))}
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 w-full max-md:grid-cols-1 max-md:gap-4">
+              {filteredProjects.length > 0 ? (
+                filteredProjects.map((project) => (
+                  <div key={project.id} className="w-full min-w-0">
+                    <Project {...project} />
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-2 max-md:col-span-1 text-center py-10 monoFont text-stone-950">
+                  No projects found in this category.
+                </div>
+              )}
             </div>
           </div>
         </div>
