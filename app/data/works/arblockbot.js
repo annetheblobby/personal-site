@@ -163,29 +163,29 @@ export const projectData = {
             },
           ],
         },
-        {
-          id: 3,
-          type: "subheading",
-          text: "Future Vision",
-          children: [
-            {
-              id: 1,
-              type: "paragraph",
-              text: "Advanced Challenges: Coding levels that progressively increase in difficulty.\n\nMultiplayer Features: Users can battle or collaborate with friends in shared AR scenes.\n\nExpanded Robotics Integration: Adding real-world physics interactions like throttle control.",
-            },
-            {
-              id: 2,
-              type: "paragraph",
-              text: "BlockBot transforms robotics education—making it more inclusive, engaging, and fun for learners of all levels.",
-            },
-            {
-              id: 3,
-              type: "video",
-              src: "https://player.vimeo.com/video/427623490",
-              className: "mt-12 mb-12",
-            },
-          ],
-        },
+        // {
+        //   id: 3,
+        //   type: "subheading",
+        //   text: "Future Vision",
+        //   children: [
+        //     {
+        //       id: 1,
+        //       type: "paragraph",
+        //       text: "Advanced Challenges: Coding levels that progressively increase in difficulty.\n\nMultiplayer Features: Users can battle or collaborate with friends in shared AR scenes.\n\nExpanded Robotics Integration: Adding real-world physics interactions like throttle control.",
+        //     },
+        //     {
+        //       id: 2,
+        //       type: "paragraph",
+        //       text: "BlockBot transforms robotics education—making it more inclusive, engaging, and fun for learners of all levels.",
+        //     },
+        //     {
+        //       id: 3,
+        //       type: "video",
+        //       src: "https://player.vimeo.com/video/427623490",
+        //       className: "mt-12 mb-12",
+        //     },
+        //   ],
+        // },
       ],
     },
   ],
